@@ -462,7 +462,7 @@ type ProfileInfo struct {
 	Avatar *string `json:"avatar" validate:"omitempty,max=300"`
 	// User's mobile phone number | 用户的手机号码
 	// max length : 18
-	Mobile *string `json:"mobile" validate:"omitempty,numeric,max=18"`
+	Mobile *string `json:"mobile" validate:"omitempty,eq=|numeric,max=18"`
 	// The user's email address | 用户的邮箱
 	// max length : 100
 	Email *string `json:"email" validate:"omitempty,email,max=100"`

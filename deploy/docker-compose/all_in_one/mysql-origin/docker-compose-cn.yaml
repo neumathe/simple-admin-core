@@ -6,13 +6,13 @@ volumes:
   fms:
 
 networks:
-  simple-admin:
+  simple-admin-1:
     driver: bridge
 
 services:
   mysql:
     image: mysql:8.3.0
-    container_name: mysql
+    container_name: mysql-1
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always
     ports:
@@ -23,7 +23,7 @@ services:
     volumes:
       - mysql:/var/lib/mysql
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - mysql-server
     deploy:
@@ -37,14 +37,14 @@ services:
 
   redis:
     image: redis:7.2-alpine
-    container_name: redis
+    container_name: redis-1
     restart: always
     ports:
       - "6379:6379"
     volumes:
       - redis:/data
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - redis-server
     deploy:
@@ -58,7 +58,7 @@ services:
 
   core-rpc:
     image: registry.cn-hangzhou.aliyuncs.com/simple_admin/core-rpc-docker:v1.6.0
-    container_name: core-rpc
+    container_name: core-rpc-1
     restart: always
     ports:
       - "9101:9101"
@@ -69,7 +69,7 @@ services:
       DATABASE_HOST: "mysql-server"
       DATABASE_PORT: 3306
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - core-rpc
     deploy:
@@ -83,7 +83,7 @@ services:
 
   job-rpc:
     image: registry.cn-hangzhou.aliyuncs.com/simple_admin/job-rpc-docker:v1.6.0
-    container_name: job-rpc
+    container_name: job-rpc-1
     restart: always
     ports:
       - "9105:9105"
@@ -94,7 +94,7 @@ services:
       DATABASE_HOST: "mysql-server"
       DATABASE_PORT: 3306
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - job-rpc
     deploy:
@@ -108,7 +108,7 @@ services:
 
   core-api:
     image: registry.cn-hangzhou.aliyuncs.com/simple_admin/core-api-docker:v1.6.0
-    container_name: core-api
+    container_name: core-api-1
     restart: always
     environment:
       #      I18N_DIR: '/app/etc/'
@@ -121,7 +121,7 @@ services:
     ports:
       - "9100:9100"
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - core-api
     deploy:
@@ -134,13 +134,13 @@ services:
           memory: 200M
 
   backend-ui:
-    image: registry.cn-hangzhou.aliyuncs.com/simple_admin/backend-ui-vben5:v1.6.0-rc.3
-    container_name: backend-ui
+    image: registry.cn-hangzhou.aliyuncs.com/simple_admin/backend-ui-docker:v1.5.8
+    container_name: backend-ui-1
     restart: always
     ports:
       - "80:80"
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - backend-ui
     deploy:
@@ -154,7 +154,7 @@ services:
 
   fms-api:
     image: registry.cn-hangzhou.aliyuncs.com/simple_admin/fms-api-docker:v1.6.0
-    container_name: fms-api
+    container_name: fms-api-1
     restart: always
     #    environment:
     #      SERVER_URL: 'http://localhost:81'
@@ -171,7 +171,7 @@ services:
     volumes:
       - fms:/home/data
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - fms-api
     deploy:
@@ -185,7 +185,7 @@ services:
 
   mcms-rpc:
     image: registry.cn-hangzhou.aliyuncs.com/simple_admin/mcms-rpc-docker:v1.6.0
-    container_name: mcms-rpc
+    container_name: mcms-rpc-1
     restart: always
     environment:
       DATABASE_TYPE: "mysql"
@@ -197,7 +197,7 @@ services:
     #    ports:
     #      - '9106:9106'
     networks:
-      simple-admin:
+      simple-admin-1:
         aliases:
           - mcms-rpc
     deploy:

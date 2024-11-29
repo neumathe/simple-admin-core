@@ -20,7 +20,7 @@ Log:
   ServiceName: coreRpcLogger
   Mode: console
   Path: /home/data/logs/core/rpc
-  Encoding: json
+  Encoding: plain
   Level: info
   Compress: false
   KeepDays: 7

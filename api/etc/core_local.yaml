@@ -15,7 +15,8 @@ Log:
   Compress: false
   KeepDays: 7
   StackCoolDownMillis: 100
-
+  Encoding: plain
+  
 Captcha:
   KeyLong: 5
   ImgWidth: 240
