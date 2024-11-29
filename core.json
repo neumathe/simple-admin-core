@@ -4841,7 +4841,7 @@
       "description": "Login request | 登录参数",
       "type": "object",
       "required": [
-        "username",
+        "email",
         "password",
         "captchaId",
         "captcha"
@@ -4861,18 +4861,18 @@
           "minLength": 20,
           "x-go-name": "CaptchaId"
         },
+        "email": {
+          "description": "Email | 邮箱",
+          "type": "string",
+          "maxLength": 100,
+          "x-go-name": "Email"
+        },
         "password": {
           "description": "Password | 密码",
           "type": "string",
           "maxLength": 30,
           "minLength": 6,
           "x-go-name": "Password"
-        },
-        "username": {
-          "description": "User Name | 用户名",
-          "type": "string",
-          "maxLength": 20,
-          "x-go-name": "Username"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
@@ -4897,6 +4897,18 @@
           "description": "Message | 提示信息",
           "type": "string",
           "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "LogoutReq": {
+      "description": "Logout Req | 登出请求",
+      "type": "object",
+      "properties": {
+        "source": {
+          "description": "Source | 来源",
+          "type": "string",
+          "x-go-name": "Source"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
@@ -5950,7 +5962,6 @@
       "description": "Register by email request | 邮箱注册参数",
       "type": "object",
       "required": [
-        "username",
         "password",
         "captcha",
         "email"
@@ -5969,18 +5980,18 @@
           "maxLength": 100,
           "x-go-name": "Email"
         },
+        "nickname": {
+          "description": "Nick Name | 昵称",
+          "type": "string",
+          "maxLength": 10,
+          "x-go-name": "Nickname"
+        },
         "password": {
           "description": "Password | 密码",
           "type": "string",
           "maxLength": 30,
           "minLength": 6,
           "x-go-name": "Password"
-        },
-        "username": {
-          "description": "User Name | 用户名",
-          "type": "string",
-          "maxLength": 20,
-          "x-go-name": "Username"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
@@ -5989,10 +6000,10 @@
       "description": "Register by SMS request | 短信注册参数",
       "type": "object",
       "required": [
-        "username",
         "password",
         "captcha",
-        "phoneNumber"
+        "phoneNumber",
+        "email"
       ],
       "properties": {
         "captcha": {
@@ -6001,6 +6012,18 @@
           "maxLength": 5,
           "minLength": 5,
           "x-go-name": "Captcha"
+        },
+        "email": {
+          "description": "The user's email address | 用户的邮箱",
+          "type": "string",
+          "maxLength": 100,
+          "x-go-name": "Email"
+        },
+        "nickname": {
+          "description": "Nick Name | 昵称",
+          "type": "string",
+          "maxLength": 10,
+          "x-go-name": "Nickname"
         },
         "password": {
           "description": "Password | 密码",
@@ -6014,12 +6037,6 @@
           "type": "string",
           "maxLength": 20,
           "x-go-name": "PhoneNumber"
-        },
-        "username": {
-          "description": "User Name | 用户名",
-          "type": "string",
-          "maxLength": 20,
-          "x-go-name": "Username"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
@@ -6028,7 +6045,6 @@
       "description": "register request | 注册参数",
       "type": "object",
       "required": [
-        "username",
         "password",
         "captchaId",
         "captcha",
@@ -6055,18 +6071,18 @@
           "maxLength": 100,
           "x-go-name": "Email"
         },
+        "nickname": {
+          "description": "Nick Name | 昵称",
+          "type": "string",
+          "maxLength": 10,
+          "x-go-name": "Nickname"
+        },
         "password": {
           "description": "Password | 密码",
           "type": "string",
           "maxLength": 30,
           "minLength": 6,
           "x-go-name": "Password"
-        },
-        "username": {
-          "description": "User Name | 用户名",
-          "type": "string",
-          "maxLength": 20,
-          "x-go-name": "Username"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
@@ -7111,11 +7127,6 @@
           "maximum": 100000,
           "x-go-name": "PageSize"
         },
-        "username": {
-          "description": "Username | 用户名",
-          "type": "string",
-          "x-go-name": "Username"
-        },
         "uuid": {
           "description": "UUID",
           "type": "string",
@@ -7201,6 +7212,11 @@
           "type": "string",
           "x-go-name": "Description"
         },
+        "email": {
+          "description": "Email | email",
+          "type": "string",
+          "x-go-name": "Email"
+        },
         "homePath": {
           "description": "The home page that the user enters after logging in | 用户登陆后进入的首页",
           "type": "string",
@@ -7223,11 +7239,6 @@
           "description": "User's UUID | 用户的UUID",
           "type": "string",
           "x-go-name": "UUID"
-        },
-        "username": {
-          "description": "User's name | 用户名",
-          "type": "string",
-          "x-go-name": "Username"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
@@ -7337,6 +7348,12 @@
           },
           "x-go-name": "RoleIds"
         },
+        "salt": {
+          "description": "Salt | 密码加盐",
+          "type": "string",
+          "maxLength": 4,
+          "x-go-name": "Salt"
+        },
         "status": {
           "description": "Status | 状态",
           "type": "integer",
@@ -7349,12 +7366,6 @@
           "type": "integer",
           "format": "int64",
           "x-go-name": "UpdatedAt"
-        },
-        "username": {
-          "description": "Username | 用户名",
-          "type": "string",
-          "maxLength": 50,
-          "x-go-name": "Username"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
@@ -7464,12 +7475,6 @@
             "format": "uint64"
           },
           "x-go-name": "RoleIds"
-        },
-        "username": {
-          "description": "User Name | 用户名",
-          "type": "string",
-          "maxLength": 20,
-          "x-go-name": "Username"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"

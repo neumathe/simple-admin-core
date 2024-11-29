@@ -37,10 +37,9 @@ func (l *RegisterLogic) Register(req *types.RegisterReq) (resp *types.BaseMsgRes
 	if ok := l.svcCtx.Captcha.Verify(config.RedisCaptchaPrefix+req.CaptchaId, req.Captcha, true); ok {
 		_, err := l.svcCtx.CoreRpc.CreateUser(l.ctx,
 			&core.UserInfo{
-				Username:     &req.Username,
 				Password:     &req.Password,
 				Email:        &req.Email,
-				Nickname:     &req.Username,
+				Nickname:     &req.Nickname,
 				Status:       pointy.GetPointer(uint32(1)),
 				HomePath:     pointy.GetPointer("/dashboard"),
 				RoleIds:      []uint64{l.svcCtx.Config.ProjectConf.DefaultRoleId},

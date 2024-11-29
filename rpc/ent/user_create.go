@@ -80,15 +80,15 @@ func (uc *UserCreate) SetNillableDeletedAt(t *time.Time) *UserCreate {
 	return uc
 }
 
-// SetUsername sets the "username" field.
-func (uc *UserCreate) SetUsername(s string) *UserCreate {
-	uc.mutation.SetUsername(s)
-	return uc
-}
-
 // SetPassword sets the "password" field.
 func (uc *UserCreate) SetPassword(s string) *UserCreate {
 	uc.mutation.SetPassword(s)
+	return uc
+}
+
+// SetSalt sets the "salt" field.
+func (uc *UserCreate) SetSalt(s string) *UserCreate {
+	uc.mutation.SetSalt(s)
 	return uc
 }
 
@@ -326,11 +326,11 @@ func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "User.updated_at"`)}
 	}
-	if _, ok := uc.mutation.Username(); !ok {
-		return &ValidationError{Name: "username", err: errors.New(`ent: missing required field "User.username"`)}
-	}
 	if _, ok := uc.mutation.Password(); !ok {
 		return &ValidationError{Name: "password", err: errors.New(`ent: missing required field "User.password"`)}
+	}
+	if _, ok := uc.mutation.Salt(); !ok {
+		return &ValidationError{Name: "salt", err: errors.New(`ent: missing required field "User.salt"`)}
 	}
 	if _, ok := uc.mutation.Nickname(); !ok {
 		return &ValidationError{Name: "nickname", err: errors.New(`ent: missing required field "User.nickname"`)}
@@ -389,13 +389,13 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 		_spec.SetField(user.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := uc.mutation.Username(); ok {
-		_spec.SetField(user.FieldUsername, field.TypeString, value)
-		_node.Username = value
-	}
 	if value, ok := uc.mutation.Password(); ok {
 		_spec.SetField(user.FieldPassword, field.TypeString, value)
 		_node.Password = value
+	}
+	if value, ok := uc.mutation.Salt(); ok {
+		_spec.SetField(user.FieldSalt, field.TypeString, value)
+		_node.Salt = value
 	}
 	if value, ok := uc.mutation.Nickname(); ok {
 		_spec.SetField(user.FieldNickname, field.TypeString, value)

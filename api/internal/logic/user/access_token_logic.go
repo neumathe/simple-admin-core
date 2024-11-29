@@ -69,7 +69,7 @@ func (l *AccessTokenLogic) AccessToken() (resp *types.RefreshTokenResp, err erro
 		Token:     pointy.GetPointer(token),
 		Source:    pointy.GetPointer("core_user_access_token"),
 		Status:    pointy.GetPointer(uint32(common.StatusNormal)),
-		Username:  userData.Username,
+		Username:  userData.Nickname,
 		ExpiredAt: pointy.GetPointer(expiredAt),
 	})
 

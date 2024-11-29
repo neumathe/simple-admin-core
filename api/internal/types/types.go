@@ -171,9 +171,9 @@ type UserInfo struct {
 	// Status | 状态
 	// max : 20
 	Status *uint32 `json:"status,optional" validate:"omitempty,lt=20"`
-	// Username | 用户名
-	// max length : 50
-	Username *string `json:"username,optional" validate:"omitempty,max=50"`
+	// Salt | 密码加盐
+	// max length : 4
+	Salt *string `json:"salt,optional" validate:"omitempty,max=4"`
 	// Nickname | 昵称
 	// max length : 40
 	Nickname *string `json:"nickname,optional" validate:"omitempty,max=40"`
@@ -223,9 +223,6 @@ type UserListInfo struct {
 // swagger:model UserListReq
 type UserListReq struct {
 	PageInfo
-	// User Name | 用户名
-	// max length : 20
-	Username *string `json:"username,optional" validate:"omitempty,alphanum,max=20"`
 	// User's nickname | 用户的昵称
 	// max length : 10
 	Nickname *string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
@@ -254,10 +251,6 @@ type UserInfoResp struct {
 // register request | 注册参数
 // swagger:model RegisterReq
 type RegisterReq struct {
-	// User Name | 用户名
-	// required : true
-	// max length : 20
-	Username string `json:"username" validate:"required,alphanum,max=20"`
 	// Password | 密码
 	// required : true
 	// max length : 30
@@ -277,15 +270,14 @@ type RegisterReq struct {
 	// required : true
 	// max length : 100
 	Email string `json:"email" validate:"required,email,max=100"`
+	// Nick Name | 昵称
+	// max length : 10
+	Nickname string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
 }
 
 // Register by email request | 邮箱注册参数
 // swagger:model RegisterByEmailReq
 type RegisterByEmailReq struct {
-	// User Name | 用户名
-	// required : true
-	// max length : 20
-	Username string `json:"username" validate:"required,alphanum,max=20"`
 	// Password | 密码
 	// required : true
 	// max length : 30
@@ -300,15 +292,17 @@ type RegisterByEmailReq struct {
 	// required : true
 	// max length : 100
 	Email string `json:"email" validate:"required,email,max=100"`
+	// Nick Name | 昵称
+	// max length : 10
+	Nickname string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
 }
 
 // Register by SMS request | 短信注册参数
 // swagger:model RegisterBySmsReq
 type RegisterBySmsReq struct {
-	// User Name | 用户名
-	// required : true
-	// max length : 20
-	Username string `json:"username" validate:"required,alphanum,max=20"`
+	// Nick Name | 昵称
+	// max length : 10
+	Nickname string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
 	// Password | 密码
 	// required : true
 	// max length : 30
@@ -323,6 +317,10 @@ type RegisterBySmsReq struct {
 	// required : true
 	// max length : 20
 	PhoneNumber string `json:"phoneNumber"  validate:"required,numeric,max=20"`
+	// The user's email address | 用户的邮箱
+	// required : true
+	// max length : 100
+	Email string `json:"email" validate:"required,email,max=100"`
 }
 
 // change user's password request | 修改密码请求参数
@@ -371,8 +369,8 @@ type UserBaseIDInfoResp struct {
 type UserBaseIDInfo struct {
 	// User's UUID | 用户的UUID
 	UUID *string `json:"userId"`
-	// User's name | 用户名
-	Username *string `json:"username"`
+	// Email | email
+	Email *string `json:"email"`
 	// User's nickname | 用户的昵称
 	Nickname *string `json:"nickname"`
 	// The user's avatar path | 用户的头像路径
@@ -398,10 +396,10 @@ type PermCodeResp struct {
 // Login request | 登录参数
 // swagger:model LoginReq
 type LoginReq struct {
-	// User Name | 用户名
+	// Email | 邮箱
 	// required : true
-	// max length : 20
-	Username string `json:"username" validate:"required,alphanum,max=20"`
+	// max length : 100
+	Email string `json:"email" validate:"required,email,max=100"`
 	// Password | 密码
 	// required : true
 	// max length : 30
@@ -507,6 +505,13 @@ type RefreshTokenResp struct {
 type RefreshTokenInfo struct {
 	Token     string `json:"token"`
 	ExpiredAt int64  `json:"expiredAt"`
+}
+
+// Logout Req | 登出请求
+// swagger:model LogoutReq
+type LogoutReq struct {
+	// Source | 来源
+	Source string `json:"source,optional"`
 }
 
 // The response data of menu information | 菜单信息
@@ -1046,8 +1051,6 @@ type TokenListInfo struct {
 // swagger:model TokenListReq
 type TokenListReq struct {
 	PageInfo
-	// Username | 用户名
-	Username *string `json:"username,optional"`
 	// Nickname | 昵称
 	Nickname *string `json:"nickname,optional"`
 	// Email | 邮箱

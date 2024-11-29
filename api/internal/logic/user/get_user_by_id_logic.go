@@ -44,7 +44,6 @@ func (l *GetUserByIdLogic) GetUserById(req *types.UUIDReq) (resp *types.UserInfo
 				UpdatedAt: data.UpdatedAt,
 			},
 			Status:       data.Status,
-			Username:     data.Username,
 			Nickname:     data.Nickname,
 			Description:  data.Description,
 			HomePath:     data.HomePath,

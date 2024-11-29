@@ -147,7 +147,6 @@ func (l *InitDatabaseLogic) InitDatabase(_ *core.Empty) (*core.BaseResp, error) 
 func (l *InitDatabaseLogic) insertUserData() error {
 	var users []*ent.UserCreate
 	users = append(users, l.svcCtx.DB.User.Create().
-		SetUsername("admin").
 		SetNickname("admin").
 		SetPassword(encrypt.BcryptEncrypt("simple-admin")).
 		SetEmail("simple_admin@gmail.com").

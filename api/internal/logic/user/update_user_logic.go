@@ -29,7 +29,6 @@ func (l *UpdateUserLogic) UpdateUser(req *types.UserInfo) (resp *types.BaseMsgRe
 		&core.UserInfo{
 			Id:           req.Id,
 			Status:       req.Status,
-			Username:     req.Username,
 			Password:     req.Password,
 			Nickname:     req.Nickname,
 			Description:  req.Description,

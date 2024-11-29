@@ -45,10 +45,9 @@ func (l *RegisterByEmailLogic) RegisterByEmail(req *types.RegisterByEmailReq) (r
 	if captchaData == req.Captcha {
 		_, err := l.svcCtx.CoreRpc.CreateUser(l.ctx,
 			&core.UserInfo{
-				Username:     &req.Username,
 				Password:     &req.Password,
 				Email:        &req.Email,
-				Nickname:     &req.Username,
+				Nickname:     &req.Nickname,
 				Status:       pointy.GetPointer(uint32(1)),
 				HomePath:     pointy.GetPointer("/dashboard"),
 				RoleIds:      []uint64{l.svcCtx.Config.ProjectConf.DefaultRoleId},

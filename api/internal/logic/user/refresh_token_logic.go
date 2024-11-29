@@ -67,9 +67,9 @@ func (l *RefreshTokenLogic) RefreshToken() (resp *types.RefreshTokenResp, err er
 	_, err = l.svcCtx.CoreRpc.CreateToken(l.ctx, &core.TokenInfo{
 		Uuid:      &userId,
 		Token:     pointy.GetPointer(token),
-		Source:    pointy.GetPointer("core_user_refresh_token"),
+		Source:    pointy.GetPointer("web_refresh_token"),
 		Status:    pointy.GetPointer(uint32(common.StatusNormal)),
-		Username:  userData.Username,
+		Username:  userData.Nickname,
 		ExpiredAt: pointy.GetPointer(expiredAt),
 	})
 

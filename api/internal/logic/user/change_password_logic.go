@@ -34,7 +34,7 @@ func (l *ChangePasswordLogic) ChangePassword(req *types.ChangePasswordReq) (resp
 		return nil, err
 	}
 
-	if encrypt.BcryptCheck(req.OldPassword, *userData.Password) {
+	if encrypt.MD5Check(req.OldPassword, *userData.Salt, *userData.Password) {
 		result, err := l.svcCtx.CoreRpc.UpdateUser(l.ctx, &core.UserInfo{
 			Id:       pointy.GetPointer(l.ctx.Value("userId").(string)),
 			Password: pointy.GetPointer(req.NewPassword),

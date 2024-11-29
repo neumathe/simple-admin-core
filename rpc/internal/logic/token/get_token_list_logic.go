@@ -35,7 +35,7 @@ func NewGetTokenListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetT
 func (l *GetTokenListLogic) GetTokenList(in *core.TokenListReq) (*core.TokenListResp, error) {
 	var tokens *ent.TokenPageList
 	var err error
-	if in.Username == nil && in.Uuid == nil && in.Nickname == nil && in.Email == nil {
+	if in.Uuid == nil && in.Nickname == nil && in.Email == nil {
 		tokens, err = l.svcCtx.DB.Token.Query().Page(l.ctx, in.Page, in.PageSize)
 
 		if err != nil {
@@ -46,10 +46,6 @@ func (l *GetTokenListLogic) GetTokenList(in *core.TokenListReq) (*core.TokenList
 
 		if in.Uuid != nil {
 			predicates = append(predicates, user.IDEQ(uuidx.ParseUUIDString(*in.Uuid)))
-		}
-
-		if in.Username != nil {
-			predicates = append(predicates, user.Username(*in.Username))
 		}
 
 		if in.Email != nil {

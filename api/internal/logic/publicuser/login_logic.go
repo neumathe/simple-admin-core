@@ -40,20 +40,20 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 	}
 
 	if ok := l.svcCtx.Captcha.Verify(config.RedisCaptchaPrefix+req.CaptchaId, req.Captcha, true); ok {
-		user, err := l.svcCtx.CoreRpc.GetUserByUsername(l.ctx,
-			&core.UsernameReq{
-				Username: req.Username,
+		user, err := l.svcCtx.CoreRpc.GetUserByEmail(l.ctx,
+			&core.EmailReq{
+				Email: req.Email,
 			})
 		if err != nil {
 			return nil, err
 		}
 
-		if user.Status != nil && *user.Status != uint32(common.StatusNormal) {
-			return nil, errorx.NewCodeInvalidArgumentError("login.userBanned")
+		if !encrypt.MD5Check(req.Password, *user.Salt, *user.Password) {
+			return nil, errorx.NewCodeInvalidArgumentError("login.wrongUsernameOrPassword")
 		}
 
-		if !encrypt.BcryptCheck(req.Password, *user.Password) {
-			return nil, errorx.NewCodeInvalidArgumentError("login.wrongUsernameOrPassword")
+		if user.Status != nil && *user.Status != uint32(common.StatusNormal) {
+			return nil, errorx.NewCodeInvalidArgumentError("login.userBanned")
 		}
 
 		token, err := jwt.NewJwtToken(l.svcCtx.Config.Auth.AccessSecret, time.Now().Unix(),
@@ -68,9 +68,9 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 		_, err = l.svcCtx.CoreRpc.CreateToken(l.ctx, &core.TokenInfo{
 			Uuid:      user.Id,
 			Token:     pointy.GetPointer(token),
-			Source:    pointy.GetPointer("core_user"),
+			Source:    pointy.GetPointer("web"),
 			Status:    pointy.GetPointer(uint32(common.StatusNormal)),
-			Username:  user.Username,
+			Username:  user.Nickname,
 			ExpiredAt: pointy.GetPointer(expiredAt),
 		})
 

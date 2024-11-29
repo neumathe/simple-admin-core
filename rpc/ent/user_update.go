@@ -85,20 +85,6 @@ func (uu *UserUpdate) ClearDeletedAt() *UserUpdate {
 	return uu
 }
 
-// SetUsername sets the "username" field.
-func (uu *UserUpdate) SetUsername(s string) *UserUpdate {
-	uu.mutation.SetUsername(s)
-	return uu
-}
-
-// SetNillableUsername sets the "username" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableUsername(s *string) *UserUpdate {
-	if s != nil {
-		uu.SetUsername(*s)
-	}
-	return uu
-}
-
 // SetPassword sets the "password" field.
 func (uu *UserUpdate) SetPassword(s string) *UserUpdate {
 	uu.mutation.SetPassword(s)
@@ -109,6 +95,20 @@ func (uu *UserUpdate) SetPassword(s string) *UserUpdate {
 func (uu *UserUpdate) SetNillablePassword(s *string) *UserUpdate {
 	if s != nil {
 		uu.SetPassword(*s)
+	}
+	return uu
+}
+
+// SetSalt sets the "salt" field.
+func (uu *UserUpdate) SetSalt(s string) *UserUpdate {
+	uu.mutation.SetSalt(s)
+	return uu
+}
+
+// SetNillableSalt sets the "salt" field if the given value is not nil.
+func (uu *UserUpdate) SetNillableSalt(s *string) *UserUpdate {
+	if s != nil {
+		uu.SetSalt(*s)
 	}
 	return uu
 }
@@ -418,11 +418,11 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if uu.mutation.DeletedAtCleared() {
 		_spec.ClearField(user.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := uu.mutation.Username(); ok {
-		_spec.SetField(user.FieldUsername, field.TypeString, value)
-	}
 	if value, ok := uu.mutation.Password(); ok {
 		_spec.SetField(user.FieldPassword, field.TypeString, value)
+	}
+	if value, ok := uu.mutation.Salt(); ok {
+		_spec.SetField(user.FieldSalt, field.TypeString, value)
 	}
 	if value, ok := uu.mutation.Nickname(); ok {
 		_spec.SetField(user.FieldNickname, field.TypeString, value)
@@ -648,20 +648,6 @@ func (uuo *UserUpdateOne) ClearDeletedAt() *UserUpdateOne {
 	return uuo
 }
 
-// SetUsername sets the "username" field.
-func (uuo *UserUpdateOne) SetUsername(s string) *UserUpdateOne {
-	uuo.mutation.SetUsername(s)
-	return uuo
-}
-
-// SetNillableUsername sets the "username" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableUsername(s *string) *UserUpdateOne {
-	if s != nil {
-		uuo.SetUsername(*s)
-	}
-	return uuo
-}
-
 // SetPassword sets the "password" field.
 func (uuo *UserUpdateOne) SetPassword(s string) *UserUpdateOne {
 	uuo.mutation.SetPassword(s)
@@ -672,6 +658,20 @@ func (uuo *UserUpdateOne) SetPassword(s string) *UserUpdateOne {
 func (uuo *UserUpdateOne) SetNillablePassword(s *string) *UserUpdateOne {
 	if s != nil {
 		uuo.SetPassword(*s)
+	}
+	return uuo
+}
+
+// SetSalt sets the "salt" field.
+func (uuo *UserUpdateOne) SetSalt(s string) *UserUpdateOne {
+	uuo.mutation.SetSalt(s)
+	return uuo
+}
+
+// SetNillableSalt sets the "salt" field if the given value is not nil.
+func (uuo *UserUpdateOne) SetNillableSalt(s *string) *UserUpdateOne {
+	if s != nil {
+		uuo.SetSalt(*s)
 	}
 	return uuo
 }
@@ -1011,11 +1011,11 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	if uuo.mutation.DeletedAtCleared() {
 		_spec.ClearField(user.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := uuo.mutation.Username(); ok {
-		_spec.SetField(user.FieldUsername, field.TypeString, value)
-	}
 	if value, ok := uuo.mutation.Password(); ok {
 		_spec.SetField(user.FieldPassword, field.TypeString, value)
+	}
+	if value, ok := uuo.mutation.Salt(); ok {
+		_spec.SetField(user.FieldSalt, field.TypeString, value)
 	}
 	if value, ok := uuo.mutation.Nickname(); ok {
 		_spec.SetField(user.FieldNickname, field.TypeString, value)

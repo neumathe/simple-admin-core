@@ -30,7 +30,6 @@ func (l *GetUserListLogic) GetUserList(req *types.UserListReq) (resp *types.User
 	data, err := l.svcCtx.CoreRpc.GetUserList(l.ctx, &core.UserListReq{
 		Page:         req.Page,
 		PageSize:     req.PageSize,
-		Username:     req.Username,
 		Nickname:     req.Nickname,
 		Email:        req.Email,
 		Mobile:       req.Mobile,
@@ -48,7 +47,6 @@ func (l *GetUserListLogic) GetUserList(req *types.UserListReq) (resp *types.User
 				CreatedAt: v.CreatedAt,
 				UpdatedAt: v.UpdatedAt,
 			},
-			Username:     v.Username,
 			Nickname:     v.Nickname,
 			Mobile:       v.Mobile,
 			RoleIds:      v.RoleIds,

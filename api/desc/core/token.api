@@ -44,9 +44,6 @@ type (
     TokenListReq {
         PageInfo
 
-        // Username | 用户名
-        Username *string `json:"username,optional"`
-
         // Nickname | 昵称
         Nickname *string `json:"nickname,optional"`
 

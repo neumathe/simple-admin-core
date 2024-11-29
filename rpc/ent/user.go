@@ -28,10 +28,10 @@ type User struct {
 	Status uint8 `json:"status,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
-	// User's login name | 登录名
-	Username string `json:"username,omitempty"`
 	// Password | 密码
 	Password string `json:"password,omitempty"`
+	// salt | 密码加盐
+	Salt string `json:"salt,omitempty"`
 	// Nickname | 昵称
 	Nickname string `json:"nickname,omitempty"`
 	// The description of user | 用户的描述信息
@@ -101,7 +101,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case user.FieldStatus, user.FieldDepartmentID:
 			values[i] = new(sql.NullInt64)
-		case user.FieldUsername, user.FieldPassword, user.FieldNickname, user.FieldDescription, user.FieldHomePath, user.FieldMobile, user.FieldEmail, user.FieldAvatar:
+		case user.FieldPassword, user.FieldSalt, user.FieldNickname, user.FieldDescription, user.FieldHomePath, user.FieldMobile, user.FieldEmail, user.FieldAvatar:
 			values[i] = new(sql.NullString)
 		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -152,17 +152,17 @@ func (u *User) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				u.DeletedAt = value.Time
 			}
-		case user.FieldUsername:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field username", values[i])
-			} else if value.Valid {
-				u.Username = value.String
-			}
 		case user.FieldPassword:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field password", values[i])
 			} else if value.Valid {
 				u.Password = value.String
+			}
+		case user.FieldSalt:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field salt", values[i])
+			} else if value.Valid {
+				u.Salt = value.String
 			}
 		case user.FieldNickname:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -269,11 +269,11 @@ func (u *User) String() string {
 	builder.WriteString("deleted_at=")
 	builder.WriteString(u.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
-	builder.WriteString("username=")
-	builder.WriteString(u.Username)
-	builder.WriteString(", ")
 	builder.WriteString("password=")
 	builder.WriteString(u.Password)
+	builder.WriteString(", ")
+	builder.WriteString("salt=")
+	builder.WriteString(u.Salt)
 	builder.WriteString(", ")
 	builder.WriteString("nickname=")
 	builder.WriteString(u.Nickname)

@@ -22,13 +22,15 @@ message TokenListResp {
 message TokenListReq {
   uint64 page = 1;
   uint64 page_size = 2;
-  optional string username = 3;
-  optional string nickname = 4;
-  optional string email = 5;
-  optional string uuid = 6;
+  optional string nickname = 3;
+  optional string email = 4;
+  optional string uuid = 5;
 }
 
-
+message BlockUserTokenBySourceReq {
+  string id = 1;
+  string source = 2;
+}
 service Core {
 
   // Token management
@@ -42,6 +44,8 @@ service Core {
   rpc getTokenById (UUIDReq) returns (TokenInfo);
   // group: token
   rpc blockUserAllToken (UUIDReq) returns (BaseResp);
+  // group: token
+  rpc BlockUserTokenBySource (BlockUserTokenBySourceReq) returns (BaseResp);
   // group: token
   rpc updateToken (TokenInfo) returns (BaseResp);
 }

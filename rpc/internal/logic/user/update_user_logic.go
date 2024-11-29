@@ -40,7 +40,6 @@ func NewUpdateUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Update
 func (l *UpdateUserLogic) UpdateUser(in *core.UserInfo) (*core.BaseResp, error) {
 	err := entx.WithTx(l.ctx, l.svcCtx.DB, func(tx *ent.Tx) error {
 		updateQuery := tx.User.UpdateOneID(uuidx.ParseUUIDString(*in.Id)).
-			SetNotNilUsername(in.Username).
 			SetNotNilNickname(in.Nickname).
 			SetNotNilEmail(in.Email).
 			SetNotNilMobile(in.Mobile).
@@ -51,7 +50,9 @@ func (l *UpdateUserLogic) UpdateUser(in *core.UserInfo) (*core.BaseResp, error) 
 			SetNotNilStatus(pointy.GetStatusPointer(in.Status))
 
 		if in.Password != nil {
-			updateQuery = updateQuery.SetNotNilPassword(pointy.GetPointer(encrypt.BcryptEncrypt(*in.Password)))
+			salt := encrypt.CreateSalt(4)
+			updateQuery = updateQuery.SetNotNilPassword(pointy.GetPointer(encrypt.MD5Encrypt(*in.Password, salt)))
+			updateQuery = updateQuery.SetSalt(salt)
 		}
 
 		if in.RoleIds != nil {

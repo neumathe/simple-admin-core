@@ -54,9 +54,10 @@ func (l *CreateUserLogic) CreateUser(in *core.UserInfo) (*core.BaseUUIDResp, err
 		}
 	}
 
+	salt := encrypt.CreateSalt(4)
 	result, err := l.svcCtx.DB.User.Create().
-		SetNotNilUsername(in.Username).
-		SetNotNilPassword(pointy.GetPointer(encrypt.BcryptEncrypt(*in.Password))).
+		SetNotNilPassword(pointy.GetPointer(encrypt.MD5Encrypt(*in.Password, salt))).
+		SetSalt(salt).
 		SetNotNilNickname(in.Nickname).
 		SetNotNilEmail(in.Email).
 		SetNotNilMobile(in.Mobile).

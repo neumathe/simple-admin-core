@@ -24,10 +24,10 @@ const (
 	FieldStatus = "status"
 	// FieldDeletedAt holds the string denoting the deleted_at field in the database.
 	FieldDeletedAt = "deleted_at"
-	// FieldUsername holds the string denoting the username field in the database.
-	FieldUsername = "username"
 	// FieldPassword holds the string denoting the password field in the database.
 	FieldPassword = "password"
+	// FieldSalt holds the string denoting the salt field in the database.
+	FieldSalt = "salt"
 	// FieldNickname holds the string denoting the nickname field in the database.
 	FieldNickname = "nickname"
 	// FieldDescription holds the string denoting the description field in the database.
@@ -76,8 +76,8 @@ var Columns = []string{
 	FieldUpdatedAt,
 	FieldStatus,
 	FieldDeletedAt,
-	FieldUsername,
 	FieldPassword,
+	FieldSalt,
 	FieldNickname,
 	FieldDescription,
 	FieldHomePath,
@@ -158,14 +158,14 @@ func ByDeletedAt(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDeletedAt, opts...).ToFunc()
 }
 
-// ByUsername orders the results by the username field.
-func ByUsername(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldUsername, opts...).ToFunc()
-}
-
 // ByPassword orders the results by the password field.
 func ByPassword(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldPassword, opts...).ToFunc()
+}
+
+// BySalt orders the results by the salt field.
+func BySalt(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldSalt, opts...).ToFunc()
 }
 
 // ByNickname orders the results by the nickname field.

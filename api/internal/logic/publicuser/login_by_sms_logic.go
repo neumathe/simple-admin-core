@@ -76,9 +76,9 @@ func (l *LoginBySmsLogic) LoginBySms(req *types.LoginBySmsReq) (resp *types.Logi
 		_, err = l.svcCtx.CoreRpc.CreateToken(l.ctx, &core.TokenInfo{
 			Uuid:      userData.Data[0].Id,
 			Token:     pointy.GetPointer(token),
-			Source:    pointy.GetPointer("core_user"),
+			Source:    pointy.GetPointer("web_sms"),
 			Status:    pointy.GetPointer(uint32(common.StatusNormal)),
-			Username:  userData.Data[0].Username,
+			Username:  userData.Data[0].Nickname,
 			ExpiredAt: pointy.GetPointer(expiredAt),
 		})
 

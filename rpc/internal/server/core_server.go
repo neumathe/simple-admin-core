@@ -323,6 +323,11 @@ func (s *CoreServer) BlockUserAllToken(ctx context.Context, in *core.UUIDReq) (*
 	return l.BlockUserAllToken(in)
 }
 
+func (s *CoreServer) BlockUserTokenBySource(ctx context.Context, in *core.BlockUserTokenBySourceReq) (*core.BaseResp, error) {
+	l := token.NewBlockUserTokenBySourceLogic(ctx, s.svcCtx)
+	return l.BlockUserTokenBySource(in)
+}
+
 func (s *CoreServer) UpdateToken(ctx context.Context, in *core.TokenInfo) (*core.BaseResp, error) {
 	l := token.NewUpdateTokenLogic(ctx, s.svcCtx)
 	return l.UpdateToken(in)
@@ -349,12 +354,12 @@ func (s *CoreServer) GetUserById(ctx context.Context, in *core.UUIDReq) (*core.U
 	return l.GetUserById(in)
 }
 
-func (s *CoreServer) GetUserByUsername(ctx context.Context, in *core.UsernameReq) (*core.UserInfo, error) {
-	l := user.NewGetUserByUsernameLogic(ctx, s.svcCtx)
-	return l.GetUserByUsername(in)
-}
-
 func (s *CoreServer) DeleteUser(ctx context.Context, in *core.UUIDsReq) (*core.BaseResp, error) {
 	l := user.NewDeleteUserLogic(ctx, s.svcCtx)
 	return l.DeleteUser(in)
+}
+
+func (s *CoreServer) GetUserByEmail(ctx context.Context, in *core.EmailReq) (*core.UserInfo, error) {
+	l := user.NewGetUserByEmailLogic(ctx, s.svcCtx)
+	return l.GetUserByEmail(in)
 }

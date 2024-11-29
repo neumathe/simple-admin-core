@@ -37,10 +37,10 @@ func (l *GetUserInfoLogic) GetUserInfo() (resp *types.UserBaseIDInfoResp, err er
 		BaseDataInfo: types.BaseDataInfo{Msg: l.svcCtx.Trans.Trans(l.ctx, i18n.Success)},
 		Data: types.UserBaseIDInfo{
 			UUID:           user.Id,
-			Username:       user.Username,
 			Nickname:       user.Nickname,
 			Avatar:         user.Avatar,
 			HomePath:       user.HomePath,
+			Email:          user.Email,
 			Description:    user.Description,
 			DepartmentName: l.svcCtx.Trans.Trans(l.ctx, *user.DepartmentName),
 			RoleName:       TransRoleName(l.svcCtx, l.ctx, user.RoleName),

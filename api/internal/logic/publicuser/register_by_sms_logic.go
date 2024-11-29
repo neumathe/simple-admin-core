@@ -45,10 +45,10 @@ func (l *RegisterBySmsLogic) RegisterBySms(req *types.RegisterBySmsReq) (resp *t
 	if captchaData == req.Captcha {
 		_, err := l.svcCtx.CoreRpc.CreateUser(l.ctx,
 			&core.UserInfo{
-				Username:     &req.Username,
 				Password:     &req.Password,
 				Mobile:       &req.PhoneNumber,
-				Nickname:     &req.Username,
+				Email:        &req.Email,
+				Nickname:     &req.Nickname,
 				Status:       pointy.GetPointer(uint32(1)),
 				HomePath:     pointy.GetPointer("/dashboard"),
 				RoleIds:      []uint64{l.svcCtx.Config.ProjectConf.DefaultRoleId},

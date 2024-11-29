@@ -6,19 +6,19 @@ DatabaseConf:
   Host: 127.0.0.1
   Port: 3306
   DBName: simple_admin
-  Username: # set your username
-  Password: # set your password
+  Username: root # set your username
+  Password: simple-admin. # set your password
   MaxOpenConn: 100
   SSLMode: disable # disable or require
   CacheTime: 5
 
 RedisConf:
-  Host: redis-server:6379
+  Host: localhost:6379
   Db: 0
 
 Log:
   ServiceName: coreRpcLogger
-  Mode: file
+  Mode: console
   Path: /home/data/logs/core/rpc
   Encoding: json
   Level: info

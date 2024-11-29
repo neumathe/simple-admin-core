@@ -49,6 +49,11 @@ message BaseUUIDResp {
   string msg = 2;
 }
 
+message BlockUserTokenBySourceReq {
+  string id = 1;
+  string source = 2;
+}
+
 message CallbackReq {
   string state = 1;
   string code = 2;
@@ -158,6 +163,10 @@ message DictionaryListReq {
 message DictionaryListResp {
   uint64 total = 1;
   repeated DictionaryInfo data = 2;
+}
+
+message EmailReq {
+  string email = 1;
 }
 
 //  base message
@@ -335,10 +344,9 @@ message TokenInfo {
 message TokenListReq {
   uint64 page = 1;
   uint64 page_size = 2;
-  optional string username = 3;
-  optional string nickname = 4;
-  optional string email = 5;
-  optional string uuid = 6;
+  optional string nickname = 3;
+  optional string email = 4;
+  optional string uuid = 5;
 }
 
 message TokenListResp {
@@ -359,7 +367,7 @@ message UserInfo {
   optional int64 created_at = 2;
   optional int64 updated_at = 3;
   optional uint32 status = 4;
-  optional string username = 5;
+  optional string salt = 5;
   optional string password = 6;
   optional string nickname = 7;
   optional string description = 8;
@@ -519,6 +527,8 @@ service Core {
   //  group: token
   rpc blockUserAllToken(UUIDReq) returns (BaseResp);
   //  group: token
+  rpc BlockUserTokenBySource(BlockUserTokenBySourceReq) returns (BaseResp);
+  //  group: token
   rpc updateToken(TokenInfo) returns (BaseResp);
   //  User management
   //  group: user
@@ -530,8 +540,8 @@ service Core {
   //  group: user
   rpc getUserById(UUIDReq) returns (UserInfo);
   //  group: user
-  rpc getUserByUsername(UsernameReq) returns (UserInfo);
-  //  group: user
   rpc deleteUser(UUIDsReq) returns (BaseResp);
+  //  group: user
+  rpc getUserByEmail(EmailReq) returns (UserInfo);
 }
 

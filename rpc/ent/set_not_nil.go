@@ -2265,30 +2265,6 @@ func (u *UserCreate) SetNotNilDeletedAt(value *time.Time) *UserCreate {
 }
 
 // set field if value's pointer is not nil.
-func (u *UserUpdate) SetNotNilUsername(value *string) *UserUpdate {
-	if value != nil {
-		return u.SetUsername(*value)
-	}
-	return u
-}
-
-// set field if value's pointer is not nil.
-func (u *UserUpdateOne) SetNotNilUsername(value *string) *UserUpdateOne {
-	if value != nil {
-		return u.SetUsername(*value)
-	}
-	return u
-}
-
-// set field if value's pointer is not nil.
-func (u *UserCreate) SetNotNilUsername(value *string) *UserCreate {
-	if value != nil {
-		return u.SetUsername(*value)
-	}
-	return u
-}
-
-// set field if value's pointer is not nil.
 func (u *UserUpdate) SetNotNilPassword(value *string) *UserUpdate {
 	if value != nil {
 		return u.SetPassword(*value)
@@ -2308,6 +2284,30 @@ func (u *UserUpdateOne) SetNotNilPassword(value *string) *UserUpdateOne {
 func (u *UserCreate) SetNotNilPassword(value *string) *UserCreate {
 	if value != nil {
 		return u.SetPassword(*value)
+	}
+	return u
+}
+
+// set field if value's pointer is not nil.
+func (u *UserUpdate) SetNotNilSalt(value *string) *UserUpdate {
+	if value != nil {
+		return u.SetSalt(*value)
+	}
+	return u
+}
+
+// set field if value's pointer is not nil.
+func (u *UserUpdateOne) SetNotNilSalt(value *string) *UserUpdateOne {
+	if value != nil {
+		return u.SetSalt(*value)
+	}
+	return u
+}
+
+// set field if value's pointer is not nil.
+func (u *UserCreate) SetNotNilSalt(value *string) *UserCreate {
+	if value != nil {
+		return u.SetSalt(*value)
 	}
 	return u
 }

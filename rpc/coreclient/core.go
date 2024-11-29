@@ -13,57 +13,59 @@ import (
 )
 
 type (
-	ApiInfo                  = core.ApiInfo
-	ApiListReq               = core.ApiListReq
-	ApiListResp              = core.ApiListResp
-	BaseIDResp               = core.BaseIDResp
-	BaseMsg                  = core.BaseMsg
-	BaseResp                 = core.BaseResp
-	BaseUUIDResp             = core.BaseUUIDResp
-	CallbackReq              = core.CallbackReq
-	ConfigurationInfo        = core.ConfigurationInfo
-	ConfigurationListReq     = core.ConfigurationListReq
-	ConfigurationListResp    = core.ConfigurationListResp
-	DepartmentInfo           = core.DepartmentInfo
-	DepartmentListReq        = core.DepartmentListReq
-	DepartmentListResp       = core.DepartmentListResp
-	DictionaryDetailInfo     = core.DictionaryDetailInfo
-	DictionaryDetailListReq  = core.DictionaryDetailListReq
-	DictionaryDetailListResp = core.DictionaryDetailListResp
-	DictionaryInfo           = core.DictionaryInfo
-	DictionaryListReq        = core.DictionaryListReq
-	DictionaryListResp       = core.DictionaryListResp
-	Empty                    = core.Empty
-	IDReq                    = core.IDReq
-	IDsReq                   = core.IDsReq
-	MenuInfo                 = core.MenuInfo
-	MenuInfoList             = core.MenuInfoList
-	MenuRoleInfo             = core.MenuRoleInfo
-	MenuRoleListResp         = core.MenuRoleListResp
-	Meta                     = core.Meta
-	OauthLoginReq            = core.OauthLoginReq
-	OauthProviderInfo        = core.OauthProviderInfo
-	OauthProviderListReq     = core.OauthProviderListReq
-	OauthProviderListResp    = core.OauthProviderListResp
-	OauthRedirectResp        = core.OauthRedirectResp
-	PageInfoReq              = core.PageInfoReq
-	PositionInfo             = core.PositionInfo
-	PositionListReq          = core.PositionListReq
-	PositionListResp         = core.PositionListResp
-	RoleInfo                 = core.RoleInfo
-	RoleListReq              = core.RoleListReq
-	RoleListResp             = core.RoleListResp
-	RoleMenuAuthorityReq     = core.RoleMenuAuthorityReq
-	RoleMenuAuthorityResp    = core.RoleMenuAuthorityResp
-	TokenInfo                = core.TokenInfo
-	TokenListReq             = core.TokenListReq
-	TokenListResp            = core.TokenListResp
-	UUIDReq                  = core.UUIDReq
-	UUIDsReq                 = core.UUIDsReq
-	UserInfo                 = core.UserInfo
-	UserListReq              = core.UserListReq
-	UserListResp             = core.UserListResp
-	UsernameReq              = core.UsernameReq
+	ApiInfo                   = core.ApiInfo
+	ApiListReq                = core.ApiListReq
+	ApiListResp               = core.ApiListResp
+	BaseIDResp                = core.BaseIDResp
+	BaseMsg                   = core.BaseMsg
+	BaseResp                  = core.BaseResp
+	BaseUUIDResp              = core.BaseUUIDResp
+	BlockUserTokenBySourceReq = core.BlockUserTokenBySourceReq
+	CallbackReq               = core.CallbackReq
+	ConfigurationInfo         = core.ConfigurationInfo
+	ConfigurationListReq      = core.ConfigurationListReq
+	ConfigurationListResp     = core.ConfigurationListResp
+	DepartmentInfo            = core.DepartmentInfo
+	DepartmentListReq         = core.DepartmentListReq
+	DepartmentListResp        = core.DepartmentListResp
+	DictionaryDetailInfo      = core.DictionaryDetailInfo
+	DictionaryDetailListReq   = core.DictionaryDetailListReq
+	DictionaryDetailListResp  = core.DictionaryDetailListResp
+	DictionaryInfo            = core.DictionaryInfo
+	DictionaryListReq         = core.DictionaryListReq
+	DictionaryListResp        = core.DictionaryListResp
+	EmailReq                  = core.EmailReq
+	Empty                     = core.Empty
+	IDReq                     = core.IDReq
+	IDsReq                    = core.IDsReq
+	MenuInfo                  = core.MenuInfo
+	MenuInfoList              = core.MenuInfoList
+	MenuRoleInfo              = core.MenuRoleInfo
+	MenuRoleListResp          = core.MenuRoleListResp
+	Meta                      = core.Meta
+	OauthLoginReq             = core.OauthLoginReq
+	OauthProviderInfo         = core.OauthProviderInfo
+	OauthProviderListReq      = core.OauthProviderListReq
+	OauthProviderListResp     = core.OauthProviderListResp
+	OauthRedirectResp         = core.OauthRedirectResp
+	PageInfoReq               = core.PageInfoReq
+	PositionInfo              = core.PositionInfo
+	PositionListReq           = core.PositionListReq
+	PositionListResp          = core.PositionListResp
+	RoleInfo                  = core.RoleInfo
+	RoleListReq               = core.RoleListReq
+	RoleListResp              = core.RoleListResp
+	RoleMenuAuthorityReq      = core.RoleMenuAuthorityReq
+	RoleMenuAuthorityResp     = core.RoleMenuAuthorityResp
+	TokenInfo                 = core.TokenInfo
+	TokenListReq              = core.TokenListReq
+	TokenListResp             = core.TokenListResp
+	UUIDReq                   = core.UUIDReq
+	UUIDsReq                  = core.UUIDsReq
+	UserInfo                  = core.UserInfo
+	UserListReq               = core.UserListReq
+	UserListResp              = core.UserListResp
+	UsernameReq               = core.UsernameReq
 
 	Core interface {
 		// API management
@@ -131,14 +133,15 @@ type (
 		GetTokenList(ctx context.Context, in *TokenListReq, opts ...grpc.CallOption) (*TokenListResp, error)
 		GetTokenById(ctx context.Context, in *UUIDReq, opts ...grpc.CallOption) (*TokenInfo, error)
 		BlockUserAllToken(ctx context.Context, in *UUIDReq, opts ...grpc.CallOption) (*BaseResp, error)
+		BlockUserTokenBySource(ctx context.Context, in *BlockUserTokenBySourceReq, opts ...grpc.CallOption) (*BaseResp, error)
 		UpdateToken(ctx context.Context, in *TokenInfo, opts ...grpc.CallOption) (*BaseResp, error)
 		// User management
 		CreateUser(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*BaseUUIDResp, error)
 		UpdateUser(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*BaseResp, error)
 		GetUserList(ctx context.Context, in *UserListReq, opts ...grpc.CallOption) (*UserListResp, error)
 		GetUserById(ctx context.Context, in *UUIDReq, opts ...grpc.CallOption) (*UserInfo, error)
-		GetUserByUsername(ctx context.Context, in *UsernameReq, opts ...grpc.CallOption) (*UserInfo, error)
 		DeleteUser(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*BaseResp, error)
+		GetUserByEmail(ctx context.Context, in *EmailReq, opts ...grpc.CallOption) (*UserInfo, error)
 	}
 
 	defaultCore struct {
@@ -441,6 +444,11 @@ func (m *defaultCore) BlockUserAllToken(ctx context.Context, in *UUIDReq, opts .
 	return client.BlockUserAllToken(ctx, in, opts...)
 }
 
+func (m *defaultCore) BlockUserTokenBySource(ctx context.Context, in *BlockUserTokenBySourceReq, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := core.NewCoreClient(m.cli.Conn())
+	return client.BlockUserTokenBySource(ctx, in, opts...)
+}
+
 func (m *defaultCore) UpdateToken(ctx context.Context, in *TokenInfo, opts ...grpc.CallOption) (*BaseResp, error) {
 	client := core.NewCoreClient(m.cli.Conn())
 	return client.UpdateToken(ctx, in, opts...)
@@ -467,12 +475,12 @@ func (m *defaultCore) GetUserById(ctx context.Context, in *UUIDReq, opts ...grpc
 	return client.GetUserById(ctx, in, opts...)
 }
 
-func (m *defaultCore) GetUserByUsername(ctx context.Context, in *UsernameReq, opts ...grpc.CallOption) (*UserInfo, error) {
-	client := core.NewCoreClient(m.cli.Conn())
-	return client.GetUserByUsername(ctx, in, opts...)
-}
-
 func (m *defaultCore) DeleteUser(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
 	client := core.NewCoreClient(m.cli.Conn())
 	return client.DeleteUser(ctx, in, opts...)
+}
+
+func (m *defaultCore) GetUserByEmail(ctx context.Context, in *EmailReq, opts ...grpc.CallOption) (*UserInfo, error) {
+	client := core.NewCoreClient(m.cli.Conn())
+	return client.GetUserByEmail(ctx, in, opts...)
 }

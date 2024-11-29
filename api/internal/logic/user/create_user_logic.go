@@ -28,7 +28,6 @@ func (l *CreateUserLogic) CreateUser(req *types.UserInfo) (resp *types.BaseMsgRe
 	data, err := l.svcCtx.CoreRpc.CreateUser(l.ctx,
 		&core.UserInfo{
 			Status:       req.Status,
-			Username:     req.Username,
 			Password:     req.Password,
 			Nickname:     req.Nickname,
 			Description:  req.Description,

@@ -24,12 +24,18 @@ func NewLogoutLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LogoutLogi
 	}
 }
 
-func (l *LogoutLogic) Logout() (resp *types.BaseMsgResp, err error) {
-	result, err := l.svcCtx.CoreRpc.BlockUserAllToken(l.ctx,
-		&core.UUIDReq{Id: l.ctx.Value("userId").(string)})
-	if err != nil {
-		return nil, err
+func (l *LogoutLogic) Logout(req *types.LogoutReq) (resp *types.BaseMsgResp, err error) {
+	if req.Source != "" {
+		result, err := l.svcCtx.CoreRpc.BlockUserTokenBySource(l.ctx, &core.BlockUserTokenBySourceReq{Id: l.ctx.Value("userId").(string), Source: req.Source})
+		if err != nil {
+			return nil, err
+		}
+		return &types.BaseMsgResp{Msg: result.Msg}, nil
+	} else {
+		result, err := l.svcCtx.CoreRpc.BlockUserAllToken(l.ctx, &core.UUIDReq{Id: l.ctx.Value("userId").(string)})
+		if err != nil {
+			return nil, err
+		}
+		return &types.BaseMsgResp{Msg: result.Msg}, nil
 	}
-
-	return &types.BaseMsgResp{Msg: l.svcCtx.Trans.Trans(l.ctx, result.Msg)}, nil
 }

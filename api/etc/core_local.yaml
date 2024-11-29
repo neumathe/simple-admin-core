@@ -9,7 +9,7 @@ Auth:
 
 Log:
   ServiceName: coreApiLogger
-  Mode: file
+  Mode: console
   Path: /home/data/logs/core/api
   Level: info
   Compress: false
@@ -27,14 +27,14 @@ DatabaseConf:
   Host: 127.0.0.1
   Port: 3306
   DBName: simple_admin
-  Username: # set your username
-  Password: # set your password
+  Username: root # set your username
+  Password: simple-admin. # set your password
   MaxOpenConn: 100
-  SSLMode: disable
+  SSLMode: disable # disable or require
   CacheTime: 5
 
 RedisConf:
-  Host: redis-server:6379
+  Host: localhost:6379
   Db: 0
 
 ProjectConf:
@@ -74,17 +74,17 @@ CROSConf:
 
 CoreRpc:
   Endpoints:
-    - core-rpc:9101
+    - localhost:9101
   Enabled: true
 
 JobRpc:
   Endpoints:
-    - job-rpc:9105
+    - localhost:9105
   Enabled: true
 
 McmsRpc:
   Endpoints:
-    - mcms-rpc:9106
+    - localhost:9106
   Enabled: true
   Timeout: 5000
 

@@ -293,13 +293,13 @@ var (
 		{Name: "updated_at", Type: field.TypeTime, Comment: "Update Time | 修改日期"},
 		{Name: "status", Type: field.TypeUint8, Nullable: true, Comment: "Status 1: normal 2: ban | 状态 1 正常 2 禁用", Default: 1},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true, Comment: "Delete Time | 删除日期"},
-		{Name: "username", Type: field.TypeString, Unique: true, Comment: "User's login name | 登录名"},
 		{Name: "password", Type: field.TypeString, Comment: "Password | 密码"},
+		{Name: "salt", Type: field.TypeString, Comment: "salt | 密码加盐"},
 		{Name: "nickname", Type: field.TypeString, Unique: true, Comment: "Nickname | 昵称"},
 		{Name: "description", Type: field.TypeString, Nullable: true, Comment: "The description of user | 用户的描述信息"},
 		{Name: "home_path", Type: field.TypeString, Comment: "The home page that the user enters after logging in | 用户登陆后进入的首页", Default: "/dashboard"},
-		{Name: "mobile", Type: field.TypeString, Nullable: true, Comment: "Mobile number | 手机号"},
-		{Name: "email", Type: field.TypeString, Nullable: true, Comment: "Email | 邮箱号"},
+		{Name: "mobile", Type: field.TypeString, Unique: true, Nullable: true, Comment: "Mobile number | 手机号"},
+		{Name: "email", Type: field.TypeString, Unique: true, Nullable: true, Comment: "Email | 邮箱号"},
 		{Name: "avatar", Type: field.TypeString, Nullable: true, Comment: "Avatar | 头像路径", SchemaType: map[string]string{"mysql": "varchar(512)"}},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true, Comment: "Department ID | 部门ID", Default: 1},
 	}
@@ -318,9 +318,9 @@ var (
 		},
 		Indexes: []*schema.Index{
 			{
-				Name:    "user_username_email",
+				Name:    "user_email",
 				Unique:  true,
-				Columns: []*schema.Column{SysUsersColumns[5], SysUsersColumns[11]},
+				Columns: []*schema.Column{SysUsersColumns[11]},
 			},
 		},
 	}

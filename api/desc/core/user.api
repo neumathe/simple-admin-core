@@ -8,8 +8,8 @@ type (
         // Status | 状态
         Status *uint32 `json:"status,optional" validate:"omitempty,lt=20"`
 
-        // Username | 用户名
-        Username *string `json:"username,optional" validate:"omitempty,max=50"`
+        // Salt | 密码加盐
+        Salt *string `json:"salt,optional" validate:"omitempty,max=4"`
 
         // Nickname | 昵称
         Nickname *string `json:"nickname,optional" validate:"omitempty,max=40"`
@@ -62,9 +62,6 @@ type (
     UserListReq {
         PageInfo
 
-        // User Name | 用户名
-        Username *string `json:"username,optional" validate:"omitempty,alphanum,max=20"`
-
         // User's nickname | 用户的昵称
         Nickname *string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
 
@@ -94,9 +91,6 @@ type (
 
     // register request | 注册参数
     RegisterReq {
-        // User Name | 用户名
-        Username  string `json:"username" validate:"required,alphanum,max=20"`
-
         // Password | 密码
         Password  string `json:"password" validate:"required,max=30,min=6"`
 
@@ -108,13 +102,13 @@ type (
 
         // The user's email address | 用户的邮箱
         Email     string `json:"email" validate:"required,email,max=100"`
+
+        // Nick Name | 昵称
+        Nickname string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
     }
 
     // Register by email request | 邮箱注册参数
     RegisterByEmailReq {
-        // User Name | 用户名
-        Username  string `json:"username" validate:"required,alphanum,max=20"`
-
         // Password | 密码
         Password  string `json:"password" validate:"required,max=30,min=6"`
 
@@ -123,12 +117,15 @@ type (
 
         // The user's email address | 用户的邮箱
         Email     string `json:"email" validate:"required,email,max=100"`
+
+        // Nick Name | 昵称
+        Nickname string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
     }
 
     // Register by SMS request | 短信注册参数
     RegisterBySmsReq {
-        // User Name | 用户名
-        Username  string `json:"username" validate:"required,alphanum,max=20"`
+        // Nick Name | 昵称
+        Nickname string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
 
         // Password | 密码
         Password  string `json:"password" validate:"required,max=30,min=6"`
@@ -138,6 +135,9 @@ type (
 
         // The user's mobile phone number | 用户的手机号码
         PhoneNumber   string  `json:"phoneNumber"  validate:"required,numeric,max=20"`
+
+        // The user's email address | 用户的邮箱
+        Email     string `json:"email" validate:"required,email,max=100"`
     }
 
     // change user's password request | 修改密码请求参数
@@ -184,8 +184,8 @@ type (
         // User's UUID | 用户的UUID
         UUID *string `json:"userId"`
 
-        // User's name | 用户名
-        Username *string `json:"username"`
+        // Email | email
+        Email *string `json:"email"`
 
         // User's nickname | 用户的昵称
         Nickname *string `json:"nickname"`
@@ -217,8 +217,8 @@ type (
 
     // Login request | 登录参数
     LoginReq {
-        // User Name | 用户名
-        Username   string `json:"username" validate:"required,alphanum,max=20"`
+        // Email | 邮箱
+        Email   string `json:"email" validate:"required,email,max=100"`
 
         // Password | 密码
         Password   string `json:"password" validate:"required,max=30,min=6"`
@@ -305,6 +305,12 @@ type (
     RefreshTokenInfo {
         Token       string  `json:"token"`
         ExpiredAt   int64   `json:"expiredAt"`
+    }
+
+    // Logout Req | 登出请求
+    LogoutReq {
+        // Source | 来源
+        Source string `json:"source,optional"`
     }
 )
 
@@ -395,7 +401,7 @@ service Core {
 
     // Log out | 退出登陆
     @handler logout
-    get /user/logout returns (BaseMsgResp)
+    get /user/logout (LogoutReq) returns (BaseMsgResp)
 
     // Refresh token | 获取刷新 token
     @handler refreshToken

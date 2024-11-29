@@ -38,10 +38,6 @@ func (l *GetUserListLogic) GetUserList(in *core.UserListReq) (*core.UserListResp
 		predicates = append(predicates, user.MobileEQ(*in.Mobile))
 	}
 
-	if in.Username != nil {
-		predicates = append(predicates, user.UsernameContains(*in.Username))
-	}
-
 	if in.Email != nil {
 		predicates = append(predicates, user.EmailEQ(*in.Email))
 	}
@@ -79,7 +75,6 @@ func (l *GetUserListLogic) GetUserList(in *core.UserListReq) (*core.UserListResp
 			Mobile:       &v.Mobile,
 			Email:        &v.Email,
 			Status:       pointy.GetPointer(uint32(v.Status)),
-			Username:     &v.Username,
 			Nickname:     &v.Nickname,
 			HomePath:     &v.HomePath,
 			Description:  &v.Description,
