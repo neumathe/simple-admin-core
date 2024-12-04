@@ -228,7 +228,7 @@ type UserListReq struct {
 	Nickname *string `json:"nickname,optional" validate:"omitempty,alphanumunicode,max=10"`
 	// User's mobile phone number | 用户的手机号码
 	// max length : 18
-	Mobile *string `json:"mobile,optional" validate:"omitempty,numeric,max=18"`
+	Mobile *string `json:"mobile,optional" validate:"omitempty,eq=|numeric,max=18"`
 	// The user's email address | 用户的邮箱
 	// max length : 100
 	Email *string `json:"email,optional" validate:"omitempty,email,max=100"`
