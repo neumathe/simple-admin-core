@@ -4841,7 +4841,7 @@
       "description": "Login request | 登录参数",
       "type": "object",
       "required": [
-        "email",
+        "emailOrPhone",
         "password",
         "captchaId",
         "captcha"
@@ -4861,11 +4861,12 @@
           "minLength": 20,
           "x-go-name": "CaptchaId"
         },
-        "email": {
+        "emailOrPhone": {
           "description": "Email | 邮箱",
           "type": "string",
           "maxLength": 100,
-          "x-go-name": "Email"
+          "minLength": 1,
+          "x-go-name": "EmailOrPhone"
         },
         "password": {
           "description": "Password | 密码",

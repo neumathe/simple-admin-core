@@ -49,6 +49,7 @@ type (
 	OauthProviderListResp     = core.OauthProviderListResp
 	OauthRedirectResp         = core.OauthRedirectResp
 	PageInfoReq               = core.PageInfoReq
+	PhoneReq                  = core.PhoneReq
 	PositionInfo              = core.PositionInfo
 	PositionListReq           = core.PositionListReq
 	PositionListResp          = core.PositionListResp
@@ -142,6 +143,7 @@ type (
 		GetUserById(ctx context.Context, in *UUIDReq, opts ...grpc.CallOption) (*UserInfo, error)
 		DeleteUser(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 		GetUserByEmail(ctx context.Context, in *EmailReq, opts ...grpc.CallOption) (*UserInfo, error)
+		GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...grpc.CallOption) (*UserInfo, error)
 	}
 
 	defaultCore struct {
@@ -483,4 +485,9 @@ func (m *defaultCore) DeleteUser(ctx context.Context, in *UUIDsReq, opts ...grpc
 func (m *defaultCore) GetUserByEmail(ctx context.Context, in *EmailReq, opts ...grpc.CallOption) (*UserInfo, error) {
 	client := core.NewCoreClient(m.cli.Conn())
 	return client.GetUserByEmail(ctx, in, opts...)
+}
+
+func (m *defaultCore) GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...grpc.CallOption) (*UserInfo, error) {
+	client := core.NewCoreClient(m.cli.Conn())
+	return client.GetUserByPhone(ctx, in, opts...)
 }

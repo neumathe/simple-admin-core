@@ -399,7 +399,8 @@ type LoginReq struct {
 	// Email | 邮箱
 	// required : true
 	// max length : 100
-	Email string `json:"email" validate:"required,email,max=100"`
+	// min length : 1
+	EmailOrPhone string `json:"emailOrPhone" validate:"required,email|numeric,max=100,min=1"`
 	// Password | 密码
 	// required : true
 	// max length : 30

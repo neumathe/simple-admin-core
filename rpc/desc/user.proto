@@ -48,6 +48,10 @@ message EmailReq {
   string email = 1;
 }
 
+message PhoneReq {
+  string phone = 1;
+}
+
 service Core {
   // User management
   // group: user
@@ -62,4 +66,6 @@ service Core {
   rpc deleteUser (UUIDsReq) returns (BaseResp);
   // group: user
   rpc getUserByEmail (EmailReq) returns (UserInfo);
+  // group: user
+  rpc getUserByPhone (PhoneReq) returns (UserInfo);
 }

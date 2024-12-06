@@ -363,3 +363,8 @@ func (s *CoreServer) GetUserByEmail(ctx context.Context, in *core.EmailReq) (*co
 	l := user.NewGetUserByEmailLogic(ctx, s.svcCtx)
 	return l.GetUserByEmail(in)
 }
+
+func (s *CoreServer) GetUserByPhone(ctx context.Context, in *core.PhoneReq) (*core.UserInfo, error) {
+	l := user.NewGetUserByPhoneLogic(ctx, s.svcCtx)
+	return l.GetUserByPhone(in)
+}

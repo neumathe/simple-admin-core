@@ -83,6 +83,7 @@ const (
 	Core_GetUserById_FullMethodName                         = "/core.Core/getUserById"
 	Core_DeleteUser_FullMethodName                          = "/core.Core/deleteUser"
 	Core_GetUserByEmail_FullMethodName                      = "/core.Core/getUserByEmail"
+	Core_GetUserByPhone_FullMethodName                      = "/core.Core/getUserByPhone"
 )
 
 // CoreClient is the client API for Core service.
@@ -227,6 +228,8 @@ type CoreClient interface {
 	DeleteUser(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 	// group: user
 	GetUserByEmail(ctx context.Context, in *EmailReq, opts ...grpc.CallOption) (*UserInfo, error)
+	// group: user
+	GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...grpc.CallOption) (*UserInfo, error)
 }
 
 type coreClient struct {
@@ -877,6 +880,16 @@ func (c *coreClient) GetUserByEmail(ctx context.Context, in *EmailReq, opts ...g
 	return out, nil
 }
 
+func (c *coreClient) GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...grpc.CallOption) (*UserInfo, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UserInfo)
+	err := c.cc.Invoke(ctx, Core_GetUserByPhone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CoreServer is the server API for Core service.
 // All implementations must embed UnimplementedCoreServer
 // for forward compatibility.
@@ -1019,6 +1032,8 @@ type CoreServer interface {
 	DeleteUser(context.Context, *UUIDsReq) (*BaseResp, error)
 	// group: user
 	GetUserByEmail(context.Context, *EmailReq) (*UserInfo, error)
+	// group: user
+	GetUserByPhone(context.Context, *PhoneReq) (*UserInfo, error)
 	mustEmbedUnimplementedCoreServer()
 }
 
@@ -1220,6 +1235,9 @@ func (UnimplementedCoreServer) DeleteUser(context.Context, *UUIDsReq) (*BaseResp
 }
 func (UnimplementedCoreServer) GetUserByEmail(context.Context, *EmailReq) (*UserInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserByEmail not implemented")
+}
+func (UnimplementedCoreServer) GetUserByPhone(context.Context, *PhoneReq) (*UserInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserByPhone not implemented")
 }
 func (UnimplementedCoreServer) mustEmbedUnimplementedCoreServer() {}
 func (UnimplementedCoreServer) testEmbeddedByValue()              {}
@@ -2394,6 +2412,24 @@ func _Core_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Core_GetUserByPhone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PhoneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CoreServer).GetUserByPhone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Core_GetUserByPhone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CoreServer).GetUserByPhone(ctx, req.(*PhoneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Core_ServiceDesc is the grpc.ServiceDesc for Core service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2656,6 +2692,10 @@ var Core_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "getUserByEmail",
 			Handler:    _Core_GetUserByEmail_Handler,
+		},
+		{
+			MethodName: "getUserByPhone",
+			Handler:    _Core_GetUserByPhone_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

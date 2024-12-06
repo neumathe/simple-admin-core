@@ -218,7 +218,7 @@ type (
     // Login request | 登录参数
     LoginReq {
         // Email | 邮箱
-        Email   string `json:"email" validate:"required,email,max=100"`
+        EmailOrPhone   string `json:"emailOrPhone" validate:"required,email|numeric,max=100,min=1"`
 
         // Password | 密码
         Password   string `json:"password" validate:"required,max=30,min=6"`

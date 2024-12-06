@@ -2,6 +2,8 @@ package publicuser
 
 import (
 	"context"
+	"github.com/suyuan32/simple-admin-core/rpc/coreclient"
+	"regexp"
 	"strings"
 	"time"
 
@@ -40,14 +42,26 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 	}
 
 	if ok := l.svcCtx.Captcha.Verify(config.RedisCaptchaPrefix+req.CaptchaId, req.Captcha, true); ok {
-		user, err := l.svcCtx.CoreRpc.GetUserByEmail(l.ctx,
-			&core.EmailReq{
-				Email: req.Email,
+		emailRegex := regexp.MustCompile(`^[\w.!#$%&'*+/=?^` + "`" + `{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$`)
+		phoneRegex := regexp.MustCompile(`^1[3-9]\d{9}$`)
+		var user *coreclient.UserInfo
+		if emailRegex.MatchString(req.EmailOrPhone) {
+			user, err = l.svcCtx.CoreRpc.GetUserByEmail(l.ctx, &core.EmailReq{
+				Email: req.EmailOrPhone,
 			})
-		if err != nil {
-			return nil, err
+			if err != nil {
+				return nil, err
+			}
+		} else if phoneRegex.MatchString(req.EmailOrPhone) {
+			user, err = l.svcCtx.CoreRpc.GetUserByPhone(l.ctx, &core.PhoneReq{
+				Phone: req.EmailOrPhone,
+			})
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			return nil, errorx.NewInvalidArgumentError("login.emailOrMobileFormatError")
 		}
-
 		if !encrypt.MD5Check(req.Password, *user.Salt, *user.Password) {
 			return nil, errorx.NewCodeInvalidArgumentError("login.wrongUsernameOrPassword")
 		}

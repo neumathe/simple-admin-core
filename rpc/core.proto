@@ -269,6 +269,10 @@ message PageInfoReq {
   uint64 page_size = 2;
 }
 
+message PhoneReq {
+  string phone = 1;
+}
+
 message PositionInfo {
   optional uint64 id = 1;
   optional int64 created_at = 2;
@@ -543,5 +547,7 @@ service Core {
   rpc deleteUser(UUIDsReq) returns (BaseResp);
   //  group: user
   rpc getUserByEmail(EmailReq) returns (UserInfo);
+  //  group: user
+  rpc getUserByPhone(PhoneReq) returns (UserInfo);
 }
 
