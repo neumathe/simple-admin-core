@@ -1314,6 +1314,286 @@
         }
       }
     },
+    "/mcms_banner": {
+      "post": {
+        "description": "Get mcms banner by ID | 通过ID获取McmsBanner信息",
+        "tags": [
+          "mcmsbanner"
+        ],
+        "summary": "Get mcms banner by ID | 通过ID获取McmsBanner信息",
+        "operationId": "GetMcmsBannerById",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UUIDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "McmsBannerInfoResp",
+            "schema": {
+              "$ref": "#/definitions/McmsBannerInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_banner/create": {
+      "post": {
+        "description": "Create mcms banner information | 创建McmsBanner信息",
+        "tags": [
+          "mcmsbanner"
+        ],
+        "summary": "Create mcms banner information | 创建McmsBanner信息",
+        "operationId": "CreateMcmsBanner",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/McmsBannerInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_banner/delete": {
+      "post": {
+        "description": "Delete mcms banner information | 删除McmsBanner信息",
+        "tags": [
+          "mcmsbanner"
+        ],
+        "summary": "Delete mcms banner information | 删除McmsBanner信息",
+        "operationId": "DeleteMcmsBanner",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UUIDsReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_banner/list": {
+      "post": {
+        "description": "Get mcms banner list | 获取McmsBanner信息列表",
+        "tags": [
+          "mcmsbanner"
+        ],
+        "summary": "Get mcms banner list | 获取McmsBanner信息列表",
+        "operationId": "GetMcmsBannerList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/McmsBannerListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "McmsBannerListResp",
+            "schema": {
+              "$ref": "#/definitions/McmsBannerListResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_banner/update": {
+      "post": {
+        "description": "Update mcms banner information | 更新McmsBanner信息",
+        "tags": [
+          "mcmsbanner"
+        ],
+        "summary": "Update mcms banner information | 更新McmsBanner信息",
+        "operationId": "UpdateMcmsBanner",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/McmsBannerInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_notice": {
+      "post": {
+        "description": "Get mcms notice by ID | 通过ID获取McmsNotice信息",
+        "tags": [
+          "mcmsnotice"
+        ],
+        "summary": "Get mcms notice by ID | 通过ID获取McmsNotice信息",
+        "operationId": "GetMcmsNoticeById",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UUIDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "McmsNoticeInfoResp",
+            "schema": {
+              "$ref": "#/definitions/McmsNoticeInfoResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_notice/create": {
+      "post": {
+        "description": "Create mcms notice information | 创建McmsNotice信息",
+        "tags": [
+          "mcmsnotice"
+        ],
+        "summary": "Create mcms notice information | 创建McmsNotice信息",
+        "operationId": "CreateMcmsNotice",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/McmsNoticeInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_notice/delete": {
+      "post": {
+        "description": "Delete mcms notice information | 删除McmsNotice信息",
+        "tags": [
+          "mcmsnotice"
+        ],
+        "summary": "Delete mcms notice information | 删除McmsNotice信息",
+        "operationId": "DeleteMcmsNotice",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UUIDsReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_notice/list": {
+      "post": {
+        "description": "Get mcms notice list | 获取McmsNotice信息列表",
+        "tags": [
+          "mcmsnotice"
+        ],
+        "summary": "Get mcms notice list | 获取McmsNotice信息列表",
+        "operationId": "GetMcmsNoticeList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/McmsNoticeListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "McmsNoticeListResp",
+            "schema": {
+              "$ref": "#/definitions/McmsNoticeListResp"
+            }
+          }
+        }
+      }
+    },
+    "/mcms_notice/update": {
+      "post": {
+        "description": "Update mcms notice information | 更新McmsNotice信息",
+        "tags": [
+          "mcmsnotice"
+        ],
+        "summary": "Update mcms notice information | 更新McmsNotice信息",
+        "operationId": "UpdateMcmsNotice",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/McmsNoticeInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
     "/menu/create": {
       "post": {
         "description": "Create menu information | 创建菜单",
@@ -4910,6 +5190,343 @@
           "description": "Source | 来源",
           "type": "string",
           "x-go-name": "Source"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsBannerInfo": {
+      "description": "The response data of mcms banner information | McmsBanner信息",
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "description": {
+          "description": "Description | 描述",
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "id": {
+          "description": "ID",
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "image": {
+          "description": "Image | 图片地址",
+          "type": "string",
+          "x-go-name": "Image"
+        },
+        "name": {
+          "description": "Name | 名称",
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "reference": {
+          "description": "Reference | 跳转链接",
+          "type": "string",
+          "x-go-name": "Reference"
+        },
+        "status": {
+          "description": "Status 1: normal 2: ban | 状态 1 正常 2 禁用",
+          "type": "integer",
+          "format": "uint32",
+          "x-go-name": "Status"
+        },
+        "type": {
+          "description": "Type | 类型",
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "Type"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsBannerInfoResp": {
+      "description": "The mcms banner information response | McmsBanner信息返回体",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/McmsBannerInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsBannerListInfo": {
+      "description": "The mcms banner list data | McmsBanner信息列表数据",
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "The mcms banner list data | McmsBanner信息列表数据",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/McmsBannerInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsBannerListReq": {
+      "description": "Get mcms banner list request params | McmsBanner列表请求参数",
+      "type": "object",
+      "required": [
+        "page",
+        "pageSize"
+      ],
+      "properties": {
+        "description": {
+          "description": "Description",
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "image": {
+          "description": "Image",
+          "type": "string",
+          "x-go-name": "Image"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsBannerListResp": {
+      "description": "The response data of mcms banner list | McmsBanner信息列表数据",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/McmsBannerListInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsNoticeInfo": {
+      "description": "The response data of mcms notice information | McmsNotice信息",
+      "type": "object",
+      "properties": {
+        "content": {
+          "description": "Content | 内容",
+          "type": "string",
+          "x-go-name": "Content"
+        },
+        "createdAt": {
+          "description": "Create date | 创建日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "duration": {
+          "description": "Duration | 持续时间(ms)",
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "Duration"
+        },
+        "id": {
+          "description": "ID",
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "once": {
+          "description": "Once | 只展示一次",
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "Once"
+        },
+        "reference": {
+          "description": "Reference | 跳转链接",
+          "type": "string",
+          "x-go-name": "Reference"
+        },
+        "status": {
+          "description": "Status 1: normal 2: ban | 状态 1 正常 2 禁用",
+          "type": "integer",
+          "format": "uint32",
+          "x-go-name": "Status"
+        },
+        "title": {
+          "description": "Title | 标题",
+          "type": "string",
+          "x-go-name": "Title"
+        },
+        "type": {
+          "description": "Type | 公告类型 1: 页面内嵌展示 2: 对话框弹出 3:右上角弹出",
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "Type"
+        },
+        "updatedAt": {
+          "description": "Update date | 更新日期",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsNoticeInfoResp": {
+      "description": "The mcms notice information response | McmsNotice信息返回体",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/McmsNoticeInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsNoticeListInfo": {
+      "description": "The mcms notice list data | McmsNotice信息列表数据",
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "The mcms notice list data | McmsNotice信息列表数据",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/McmsNoticeInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "description": "The total number of data | 数据总数",
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsNoticeListReq": {
+      "description": "Get mcms notice list request params | McmsNotice列表请求参数",
+      "type": "object",
+      "required": [
+        "page",
+        "pageSize"
+      ],
+      "properties": {
+        "content": {
+          "description": "Content",
+          "type": "string",
+          "x-go-name": "Content"
+        },
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        },
+        "reference": {
+          "description": "Reference",
+          "type": "string",
+          "x-go-name": "Reference"
+        },
+        "title": {
+          "description": "Title",
+          "type": "string",
+          "x-go-name": "Title"
+        }
+      },
+      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+    },
+    "McmsNoticeListResp": {
+      "description": "The response data of mcms notice list | McmsNotice信息列表数据",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/McmsNoticeListInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
         }
       },
       "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"

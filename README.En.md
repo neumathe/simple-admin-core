@@ -101,7 +101,7 @@ The 6 free modules are all free for commercial use and are suitable for develope
 | FMS         | File Management     | [File](https://github.com/suyuan32/simple-admin-file)                     |
 | Job         | Scheduled Task      | [Job](https://github.com/suyuan32/simple-admin-job)                       |
 | MMS         | Member Management   | [Member](https://github.com/suyuan32/simple-admin-member-api)             |
-| MCMS        | Message Center      | [Message Center](https://github.com/suyuan32/simple-admin-message-center) |
+| MCMS        | Message Center      | [Message Center](https://github.com/neumathe/neumathe-message-center) |
 
 ## Member Exclusive Modules
 

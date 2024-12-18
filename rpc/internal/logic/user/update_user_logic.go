@@ -3,11 +3,11 @@ package user
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-common/enum/common"
+	"github.com/neumathe/simple-admin-common/enum/common"
 
-	"github.com/suyuan32/simple-admin-common/utils/encrypt"
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
-	"github.com/suyuan32/simple-admin-common/utils/uuidx"
+	"github.com/neumathe/simple-admin-common/utils/encrypt"
+	"github.com/neumathe/simple-admin-common/utils/pointy"
+	"github.com/neumathe/simple-admin-common/utils/uuidx"
 
 	"github.com/suyuan32/simple-admin-core/rpc/internal/logic/token"
 	"github.com/suyuan32/simple-admin-core/rpc/internal/utils/entx"
@@ -20,7 +20,7 @@ import (
 
 	"github.com/zeromicro/go-zero/core/logx"
 
-	"github.com/suyuan32/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/i18n"
 )
 
 type UpdateUserLogic struct {

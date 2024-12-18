@@ -3,8 +3,8 @@ package dictionarydetail
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-common/i18n"
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
+	"github.com/neumathe/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/utils/pointy"
 
 	"github.com/suyuan32/simple-admin-core/rpc/internal/svc"
 	"github.com/suyuan32/simple-admin-core/rpc/internal/utils/dberrorhandler"

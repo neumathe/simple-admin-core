@@ -3,7 +3,7 @@ package position
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
+	"github.com/neumathe/simple-admin-common/utils/pointy"
 
 	"github.com/suyuan32/simple-admin-core/rpc/ent/position"
 	"github.com/suyuan32/simple-admin-core/rpc/ent/predicate"

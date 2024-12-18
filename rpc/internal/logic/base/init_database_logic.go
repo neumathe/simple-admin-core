@@ -10,10 +10,10 @@ import (
 	"github.com/suyuan32/simple-admin-core/rpc/ent/role"
 
 	"entgo.io/ent/dialect/sql/schema"
-	"github.com/suyuan32/simple-admin-common/enum/common"
-	"github.com/suyuan32/simple-admin-common/i18n"
-	"github.com/suyuan32/simple-admin-common/msg/logmsg"
-	"github.com/suyuan32/simple-admin-common/utils/encrypt"
+	"github.com/neumathe/simple-admin-common/enum/common"
+	"github.com/neumathe/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/msg/logmsg"
+	"github.com/neumathe/simple-admin-common/utils/encrypt"
 	"github.com/zeromicro/go-zero/core/errorx"
 
 	"github.com/suyuan32/simple-admin-core/rpc/ent"

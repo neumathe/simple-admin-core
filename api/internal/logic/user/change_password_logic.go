@@ -3,8 +3,8 @@ package user
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-common/utils/encrypt"
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
+	"github.com/neumathe/simple-admin-common/utils/encrypt"
+	"github.com/neumathe/simple-admin-common/utils/pointy"
 	"github.com/zeromicro/go-zero/core/errorx"
 
 	"github.com/suyuan32/simple-admin-core/api/internal/svc"

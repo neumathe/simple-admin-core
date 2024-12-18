@@ -14,6 +14,8 @@ import (
 	dictionarydetail "github.com/suyuan32/simple-admin-core/api/internal/handler/dictionarydetail"
 	emaillog "github.com/suyuan32/simple-admin-core/api/internal/handler/emaillog"
 	emailprovider "github.com/suyuan32/simple-admin-core/api/internal/handler/emailprovider"
+	mcmsbanner "github.com/suyuan32/simple-admin-core/api/internal/handler/mcmsbanner"
+	mcmsnotice "github.com/suyuan32/simple-admin-core/api/internal/handler/mcmsnotice"
 	menu "github.com/suyuan32/simple-admin-core/api/internal/handler/menu"
 	messagesender "github.com/suyuan32/simple-admin-core/api/internal/handler/messagesender"
 	oauthprovider "github.com/suyuan32/simple-admin-core/api/internal/handler/oauthprovider"
@@ -783,6 +785,74 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 					Method:  http.MethodPost,
 					Path:    "/email/send",
 					Handler: messagesender.SendEmailHandler(serverCtx),
+				},
+			}...,
+		),
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.Authority},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_banner/create",
+					Handler: mcmsbanner.CreateMcmsBannerHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_banner/update",
+					Handler: mcmsbanner.UpdateMcmsBannerHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_banner/delete",
+					Handler: mcmsbanner.DeleteMcmsBannerHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_banner/list",
+					Handler: mcmsbanner.GetMcmsBannerListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_banner",
+					Handler: mcmsbanner.GetMcmsBannerByIdHandler(serverCtx),
+				},
+			}...,
+		),
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.Authority},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_notice/create",
+					Handler: mcmsnotice.CreateMcmsNoticeHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_notice/update",
+					Handler: mcmsnotice.UpdateMcmsNoticeHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_notice/delete",
+					Handler: mcmsnotice.DeleteMcmsNoticeHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_notice/list",
+					Handler: mcmsnotice.GetMcmsNoticeListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPost,
+					Path:    "/mcms_notice",
+					Handler: mcmsnotice.GetMcmsNoticeByIdHandler(serverCtx),
 				},
 			}...,
 		),

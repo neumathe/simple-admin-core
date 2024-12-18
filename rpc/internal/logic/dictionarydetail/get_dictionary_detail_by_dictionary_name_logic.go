@@ -3,9 +3,9 @@ package dictionarydetail
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-common/enum/common"
+	"github.com/neumathe/simple-admin-common/enum/common"
 
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
+	"github.com/neumathe/simple-admin-common/utils/pointy"
 
 	"github.com/suyuan32/simple-admin-core/rpc/ent"
 	"github.com/suyuan32/simple-admin-core/rpc/ent/dictionary"

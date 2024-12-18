@@ -5,12 +5,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/suyuan32/simple-admin-common/enum/common"
-	"github.com/suyuan32/simple-admin-common/i18n"
-	"github.com/suyuan32/simple-admin-common/orm/ent/entctx/rolectx"
-	"github.com/suyuan32/simple-admin-common/orm/ent/entctx/userctx"
-	"github.com/suyuan32/simple-admin-common/utils/jwt"
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
+	"github.com/neumathe/simple-admin-common/enum/common"
+	"github.com/neumathe/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/orm/ent/entctx/rolectx"
+	"github.com/neumathe/simple-admin-common/orm/ent/entctx/userctx"
+	"github.com/neumathe/simple-admin-common/utils/jwt"
+	"github.com/neumathe/simple-admin-common/utils/pointy"
 	"github.com/zeromicro/go-zero/core/errorx"
 
 	"github.com/suyuan32/simple-admin-core/rpc/types/core"

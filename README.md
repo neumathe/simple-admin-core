@@ -87,7 +87,7 @@ Simple Admin 有完善的开发部署工具， 十分适合高并发、高可靠
 | FMS        | 文件管理 | [File](https://github.com/suyuan32/simple-admin-file)                     |
 | Job        | 定时任务 | [Job](https://github.com/suyuan32/simple-admin-job)                       |
 | MMS        | 会员管理 | [Member](https://github.com/suyuan32/simple-admin-member-api)             |
-| MCMS       | 消息中心 | [Message Center](https://github.com/suyuan32/simple-admin-message-center) |
+| MCMS       | 消息中心 | [Message Center](https://github.com/neumathe/neumathe-message-center) |
 
 ## 会员专属的模块
 

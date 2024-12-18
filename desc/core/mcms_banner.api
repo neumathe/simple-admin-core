@@ -1,0 +1,92 @@
+import "../base.api"
+
+type (
+    // The response data of mcms banner information | McmsBanner信息
+    McmsBannerInfo {
+        BaseUUIDInfo
+
+        // Status 1: normal 2: ban | 状态 1 正常 2 禁用
+        Status  *uint32 `json:"status,optional"`
+
+        // Image | 图片地址
+        Image  *string `json:"image,optional"`
+
+        // Type | 类型
+        Type  *int32 `json:"type,optional"`
+
+        // Name | 名称
+        Name  *string `json:"name,optional"`
+
+        // Description | 描述
+        Description  *string `json:"description,optional"`
+
+        // Reference | 跳转链接
+        Reference  *string `json:"reference,optional"`
+    }
+
+    // The response data of mcms banner list | McmsBanner信息列表数据
+    McmsBannerListResp {
+        BaseDataInfo
+
+        // McmsBanner list data | McmsBanner信息列表数据
+        Data McmsBannerListInfo `json:"data"`
+    }
+
+    // The mcms banner list data | McmsBanner信息列表数据
+    McmsBannerListInfo {
+        BaseListInfo
+
+        // The mcms banner list data | McmsBanner信息列表数据
+        Data  []McmsBannerInfo  `json:"data"`
+    }
+
+    // Get mcms banner list request params | McmsBanner列表请求参数
+    McmsBannerListReq {
+        PageInfo
+
+        // Image
+        Image  *string `json:"image,optional"`
+
+        // Name
+        Name  *string `json:"name,optional"`
+
+        // Description
+        Description  *string `json:"description,optional"`
+    }
+
+    // The mcms banner information response | McmsBanner信息返回体
+    McmsBannerInfoResp {
+        BaseDataInfo
+
+        // The mcms banner information | McmsBanner信息数据
+        Data McmsBannerInfo `json:"data"`
+    }
+)
+
+@server(
+    jwt: Auth
+    group: mcmsbanner
+    middleware: Authority
+)
+
+service Core {
+    // Create mcms banner information | 创建McmsBanner信息
+    @handler createMcmsBanner
+    post /mcms_banner/create (McmsBannerInfo) returns (BaseMsgResp)
+
+    // Update mcms banner information | 更新McmsBanner信息
+    @handler updateMcmsBanner
+    post /mcms_banner/update (McmsBannerInfo) returns (BaseMsgResp)
+
+    // Delete mcms banner information | 删除McmsBanner信息
+    @handler deleteMcmsBanner
+    post /mcms_banner/delete (UUIDsReq) returns (BaseMsgResp)
+
+    // Get mcms banner list | 获取McmsBanner信息列表
+    @handler getMcmsBannerList
+    post /mcms_banner/list (McmsBannerListReq) returns (McmsBannerListResp)
+
+    // Get mcms banner by ID | 通过ID获取McmsBanner信息
+    @handler getMcmsBannerById
+    post /mcms_banner (UUIDReq) returns (McmsBannerInfoResp)
+}

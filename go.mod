@@ -10,15 +10,19 @@ require (
 	github.com/gofrs/uuid/v5 v5.3.0
 	github.com/larksuite/oapi-sdk-go/v3 v3.3.7
 	github.com/mojocn/base64Captcha v1.3.6
+	github.com/neumathe/neumathe-message-center v1.6.0
+	github.com/neumathe/simple-admin-common v1.6.0
 	github.com/redis/go-redis/v9 v9.7.0
-	github.com/suyuan32/simple-admin-common v1.6.0
 	github.com/suyuan32/simple-admin-job v1.6.0
-	github.com/suyuan32/simple-admin-message-center v1.6.0
 	github.com/zeromicro/go-zero v1.7.4
 	golang.org/x/oauth2 v0.24.0
 	google.golang.org/grpc v1.68.0
 	google.golang.org/protobuf v1.35.2
 )
+
+replace github.com/neumathe/neumathe-message-center v1.6.0 => ../neumathe-message-center
+
+replace github.com/neumathe/simple-admin-common v1.6.0 => ../simple-admin-common
 
 require github.com/bmatcuk/doublestar/v4 v4.7.1 // indirect
 

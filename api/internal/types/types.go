@@ -1612,6 +1612,116 @@ type SendEmailReq struct {
 	Provider *string `json:"provider,optional"`
 }
 
+// The response data of mcms banner information | McmsBanner信息
+// swagger:model McmsBannerInfo
+type McmsBannerInfo struct {
+	BaseUUIDInfo
+	// Status 1: normal 2: ban | 状态 1 正常 2 禁用
+	Status *uint32 `json:"status,optional"`
+	// Image | 图片地址
+	Image *string `json:"image,optional"`
+	// Type | 类型
+	Type *int32 `json:"type,optional"`
+	// Name | 名称
+	Name *string `json:"name,optional"`
+	// Description | 描述
+	Description *string `json:"description,optional"`
+	// Reference | 跳转链接
+	Reference *string `json:"reference,optional"`
+}
+
+// The response data of mcms banner list | McmsBanner信息列表数据
+// swagger:model McmsBannerListResp
+type McmsBannerListResp struct {
+	BaseDataInfo
+	// McmsBanner list data | McmsBanner信息列表数据
+	Data McmsBannerListInfo `json:"data"`
+}
+
+// The mcms banner list data | McmsBanner信息列表数据
+// swagger:model McmsBannerListInfo
+type McmsBannerListInfo struct {
+	BaseListInfo
+	// The mcms banner list data | McmsBanner信息列表数据
+	Data []McmsBannerInfo `json:"data"`
+}
+
+// Get mcms banner list request params | McmsBanner列表请求参数
+// swagger:model McmsBannerListReq
+type McmsBannerListReq struct {
+	PageInfo
+	// Image
+	Image *string `json:"image,optional"`
+	// Name
+	Name *string `json:"name,optional"`
+	// Description
+	Description *string `json:"description,optional"`
+}
+
+// The mcms banner information response | McmsBanner信息返回体
+// swagger:model McmsBannerInfoResp
+type McmsBannerInfoResp struct {
+	BaseDataInfo
+	// The mcms banner information | McmsBanner信息数据
+	Data McmsBannerInfo `json:"data"`
+}
+
+// The response data of mcms notice information | McmsNotice信息
+// swagger:model McmsNoticeInfo
+type McmsNoticeInfo struct {
+	BaseUUIDInfo
+	// Status 1: normal 2: ban | 状态 1 正常 2 禁用
+	Status *uint32 `json:"status,optional"`
+	// Title | 标题
+	Title *string `json:"title,optional"`
+	// Content | 内容
+	Content *string `json:"content,optional"`
+	// Type | 公告类型 1: 页面内嵌展示 2: 对话框弹出 3:右上角弹出
+	Type *int32 `json:"type,optional"`
+	// Duration | 持续时间(ms)
+	Duration *int32 `json:"duration,optional"`
+	// Once | 只展示一次
+	Once *int32 `json:"once,optional"`
+	// Reference | 跳转链接
+	Reference *string `json:"reference,optional"`
+}
+
+// The response data of mcms notice list | McmsNotice信息列表数据
+// swagger:model McmsNoticeListResp
+type McmsNoticeListResp struct {
+	BaseDataInfo
+	// McmsNotice list data | McmsNotice信息列表数据
+	Data McmsNoticeListInfo `json:"data"`
+}
+
+// The mcms notice list data | McmsNotice信息列表数据
+// swagger:model McmsNoticeListInfo
+type McmsNoticeListInfo struct {
+	BaseListInfo
+	// The mcms notice list data | McmsNotice信息列表数据
+	Data []McmsNoticeInfo `json:"data"`
+}
+
+// Get mcms notice list request params | McmsNotice列表请求参数
+// swagger:model McmsNoticeListReq
+type McmsNoticeListReq struct {
+	PageInfo
+	// Title
+	Title *string `json:"title,optional"`
+	// Content
+	Content *string `json:"content,optional"`
+	// Reference
+	Reference *string `json:"reference,optional"`
+}
+
+// The mcms notice information response | McmsNotice信息返回体
+// swagger:model McmsNoticeInfoResp
+type McmsNoticeInfoResp struct {
+	BaseDataInfo
+	// The mcms notice information | McmsNotice信息数据
+	Data McmsNoticeInfo `json:"data"`
+}
+
 // The response data of configuration information | 参数配置信息
 // swagger:model ConfigurationInfo
 type ConfigurationInfo struct {

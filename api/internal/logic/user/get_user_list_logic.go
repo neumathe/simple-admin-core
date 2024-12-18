@@ -3,7 +3,7 @@ package user
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/i18n"
 
 	"github.com/suyuan32/simple-admin-core/api/internal/svc"
 	"github.com/suyuan32/simple-admin-core/api/internal/types"

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/suyuan32/simple-admin-common/utils/jwt"
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
+	"github.com/neumathe/simple-admin-common/utils/jwt"
+	"github.com/neumathe/simple-admin-common/utils/pointy"
 
 	"github.com/suyuan32/simple-admin-core/api/internal/svc"
 	"github.com/suyuan32/simple-admin-core/api/internal/types"

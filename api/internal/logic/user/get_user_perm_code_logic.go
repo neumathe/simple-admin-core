@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/suyuan32/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/i18n"
 	"github.com/zeromicro/go-zero/core/errorx"
 
 	"github.com/suyuan32/simple-admin-core/api/internal/svc"

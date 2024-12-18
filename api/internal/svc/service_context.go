@@ -2,15 +2,15 @@ package svc
 
 import (
 	"github.com/mojocn/base64Captcha"
+	"github.com/neumathe/neumathe-message-center/mcmsclient"
+	"github.com/neumathe/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/utils/captcha"
 	"github.com/redis/go-redis/v9"
-	"github.com/suyuan32/simple-admin-common/i18n"
-	"github.com/suyuan32/simple-admin-common/utils/captcha"
 	"github.com/suyuan32/simple-admin-core/api/internal/config"
 	i18n2 "github.com/suyuan32/simple-admin-core/api/internal/i18n"
 	"github.com/suyuan32/simple-admin-core/api/internal/middleware"
 	"github.com/suyuan32/simple-admin-core/rpc/coreclient"
 	"github.com/suyuan32/simple-admin-job/jobclient"
-	"github.com/suyuan32/simple-admin-message-center/mcmsclient"
 
 	"github.com/casbin/casbin/v2"
 	"github.com/zeromicro/go-zero/rest"

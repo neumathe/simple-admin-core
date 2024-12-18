@@ -5,12 +5,12 @@ import (
 	"errors"
 	"time"
 
-	"github.com/suyuan32/simple-admin-common/enum/errorcode"
+	"github.com/neumathe/simple-admin-common/enum/errorcode"
 	"github.com/zeromicro/go-zero/core/errorx"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/suyuan32/simple-admin-common/i18n"
+	"github.com/neumathe/simple-admin-common/i18n"
 
 	"github.com/suyuan32/simple-admin-core/api/internal/svc"
 	"github.com/suyuan32/simple-admin-core/api/internal/types"

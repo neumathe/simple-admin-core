@@ -3,7 +3,7 @@ package role
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-common/enum/common"
+	"github.com/neumathe/simple-admin-common/enum/common"
 	"github.com/zeromicro/go-zero/core/errorx"
 	"github.com/zeromicro/go-zero/core/logx"
 
