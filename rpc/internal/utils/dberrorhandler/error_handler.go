@@ -8,7 +8,7 @@ import (
 
 	"github.com/neumathe/simple-admin-common/i18n"
 
-	"github.com/suyuan32/simple-admin-core/rpc/ent"
+	"github.com/neumathe/simple-admin-core/rpc/ent"
 )
 
 // DefaultEntError returns errors dealing with default functions.

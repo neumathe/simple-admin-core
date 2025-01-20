@@ -6,9 +6,9 @@ import (
 	"github.com/neumathe/simple-admin-common/utils/pointy"
 	"github.com/neumathe/simple-admin-common/utils/uuidx"
 
-	"github.com/suyuan32/simple-admin-core/rpc/internal/svc"
-	"github.com/suyuan32/simple-admin-core/rpc/internal/utils/dberrorhandler"
-	"github.com/suyuan32/simple-admin-core/rpc/types/core"
+	"github.com/neumathe/simple-admin-core/rpc/internal/svc"
+	"github.com/neumathe/simple-admin-core/rpc/internal/utils/dberrorhandler"
+	"github.com/neumathe/simple-admin-core/rpc/types/core"
 
 	"github.com/neumathe/simple-admin-common/i18n"
 

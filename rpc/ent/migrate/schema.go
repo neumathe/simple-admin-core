@@ -292,7 +292,6 @@ var (
 		{Name: "created_at", Type: field.TypeTime, Comment: "Create Time | 创建日期"},
 		{Name: "updated_at", Type: field.TypeTime, Comment: "Update Time | 修改日期"},
 		{Name: "status", Type: field.TypeUint8, Nullable: true, Comment: "Status 1: normal 2: ban | 状态 1 正常 2 禁用", Default: 1},
-		{Name: "deleted_at", Type: field.TypeTime, Nullable: true, Comment: "Delete Time | 删除日期"},
 		{Name: "password", Type: field.TypeString, Comment: "Password | 密码"},
 		{Name: "salt", Type: field.TypeString, Comment: "salt | 密码加盐"},
 		{Name: "nickname", Type: field.TypeString, Unique: true, Comment: "Nickname | 昵称"},
@@ -311,7 +310,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "sys_users_sys_departments_departments",
-				Columns:    []*schema.Column{SysUsersColumns[13]},
+				Columns:    []*schema.Column{SysUsersColumns[12]},
 				RefColumns: []*schema.Column{SysDepartmentsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},
@@ -320,7 +319,7 @@ var (
 			{
 				Name:    "user_email",
 				Unique:  true,
-				Columns: []*schema.Column{SysUsersColumns[11]},
+				Columns: []*schema.Column{SysUsersColumns[10]},
 			},
 		},
 	}

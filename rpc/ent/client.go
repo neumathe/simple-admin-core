@@ -10,23 +10,23 @@ import (
 	"reflect"
 
 	uuid "github.com/gofrs/uuid/v5"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/migrate"
+	"github.com/neumathe/simple-admin-core/rpc/ent/migrate"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect"
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/api"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/configuration"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/department"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/dictionary"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/dictionarydetail"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/menu"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/oauthprovider"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/position"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/role"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/token"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/user"
+	"github.com/neumathe/simple-admin-core/rpc/ent/api"
+	"github.com/neumathe/simple-admin-core/rpc/ent/configuration"
+	"github.com/neumathe/simple-admin-core/rpc/ent/department"
+	"github.com/neumathe/simple-admin-core/rpc/ent/dictionary"
+	"github.com/neumathe/simple-admin-core/rpc/ent/dictionarydetail"
+	"github.com/neumathe/simple-admin-core/rpc/ent/menu"
+	"github.com/neumathe/simple-admin-core/rpc/ent/oauthprovider"
+	"github.com/neumathe/simple-admin-core/rpc/ent/position"
+	"github.com/neumathe/simple-admin-core/rpc/ent/role"
+	"github.com/neumathe/simple-admin-core/rpc/ent/token"
+	"github.com/neumathe/simple-admin-core/rpc/ent/user"
 
 	stdsql "database/sql"
 )
@@ -1954,14 +1954,12 @@ func (c *UserClient) QueryRoles(u *User) *RoleQuery {
 
 // Hooks returns the client hooks.
 func (c *UserClient) Hooks() []Hook {
-	hooks := c.hooks.User
-	return append(hooks[:len(hooks):len(hooks)], user.Hooks[:]...)
+	return c.hooks.User
 }
 
 // Interceptors returns the client interceptors.
 func (c *UserClient) Interceptors() []Interceptor {
-	inters := c.inters.User
-	return append(inters[:len(inters):len(inters)], user.Interceptors[:]...)
+	return c.inters.User
 }
 
 func (c *UserClient) mutate(ctx context.Context, m *UserMutation) (Value, error) {

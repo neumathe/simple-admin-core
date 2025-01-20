@@ -5,8 +5,8 @@ import (
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 
-	"github.com/suyuan32/simple-admin-core/api/internal/logic/publicapi"
-	"github.com/suyuan32/simple-admin-core/api/internal/svc"
+	"github.com/neumathe/simple-admin-core/api/internal/logic/publicapi"
+	"github.com/neumathe/simple-admin-core/api/internal/svc"
 )
 
 // swagger:route get /configuration/system/list publicapi GetPublicSystemConfigurationList

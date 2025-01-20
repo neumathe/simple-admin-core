@@ -3,10 +3,10 @@ package configuration
 import (
 	"context"
 
-	"github.com/suyuan32/simple-admin-core/rpc/ent/configuration"
-	"github.com/suyuan32/simple-admin-core/rpc/internal/svc"
-	"github.com/suyuan32/simple-admin-core/rpc/internal/utils/dberrorhandler"
-	"github.com/suyuan32/simple-admin-core/rpc/types/core"
+	"github.com/neumathe/simple-admin-core/rpc/ent/configuration"
+	"github.com/neumathe/simple-admin-core/rpc/internal/svc"
+	"github.com/neumathe/simple-admin-core/rpc/internal/utils/dberrorhandler"
+	"github.com/neumathe/simple-admin-core/rpc/types/core"
 
 	"github.com/neumathe/simple-admin-common/i18n"
 	"github.com/zeromicro/go-zero/core/logx"

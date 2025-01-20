@@ -5,9 +5,9 @@ import (
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 
-	"github.com/suyuan32/simple-admin-core/api/internal/logic/dictionary"
-	"github.com/suyuan32/simple-admin-core/api/internal/svc"
-	"github.com/suyuan32/simple-admin-core/api/internal/types"
+	"github.com/neumathe/simple-admin-core/api/internal/logic/dictionary"
+	"github.com/neumathe/simple-admin-core/api/internal/svc"
+	"github.com/neumathe/simple-admin-core/api/internal/types"
 )
 
 // swagger:route post /dictionary/create dictionary CreateDictionary

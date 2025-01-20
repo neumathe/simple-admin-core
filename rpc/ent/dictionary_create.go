@@ -10,8 +10,8 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/dictionary"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/dictionarydetail"
+	"github.com/neumathe/simple-admin-core/rpc/ent/dictionary"
+	"github.com/neumathe/simple-admin-core/rpc/ent/dictionarydetail"
 )
 
 // DictionaryCreate is the builder for creating a Dictionary entity.

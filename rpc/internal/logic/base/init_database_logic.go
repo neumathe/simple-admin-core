@@ -7,7 +7,7 @@ import (
 
 	"github.com/bsm/redislock"
 
-	"github.com/suyuan32/simple-admin-core/rpc/ent/role"
+	"github.com/neumathe/simple-admin-core/rpc/ent/role"
 
 	"entgo.io/ent/dialect/sql/schema"
 	"github.com/neumathe/simple-admin-common/enum/common"
@@ -16,9 +16,9 @@ import (
 	"github.com/neumathe/simple-admin-common/utils/encrypt"
 	"github.com/zeromicro/go-zero/core/errorx"
 
-	"github.com/suyuan32/simple-admin-core/rpc/ent"
-	"github.com/suyuan32/simple-admin-core/rpc/internal/svc"
-	"github.com/suyuan32/simple-admin-core/rpc/types/core"
+	"github.com/neumathe/simple-admin-core/rpc/ent"
+	"github.com/neumathe/simple-admin-core/rpc/internal/svc"
+	"github.com/neumathe/simple-admin-core/rpc/types/core"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

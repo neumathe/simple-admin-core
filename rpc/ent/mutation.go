@@ -12,18 +12,18 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	uuid "github.com/gofrs/uuid/v5"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/api"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/configuration"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/department"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/dictionary"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/dictionarydetail"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/menu"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/oauthprovider"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/position"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/predicate"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/role"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/token"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/user"
+	"github.com/neumathe/simple-admin-core/rpc/ent/api"
+	"github.com/neumathe/simple-admin-core/rpc/ent/configuration"
+	"github.com/neumathe/simple-admin-core/rpc/ent/department"
+	"github.com/neumathe/simple-admin-core/rpc/ent/dictionary"
+	"github.com/neumathe/simple-admin-core/rpc/ent/dictionarydetail"
+	"github.com/neumathe/simple-admin-core/rpc/ent/menu"
+	"github.com/neumathe/simple-admin-core/rpc/ent/oauthprovider"
+	"github.com/neumathe/simple-admin-core/rpc/ent/position"
+	"github.com/neumathe/simple-admin-core/rpc/ent/predicate"
+	"github.com/neumathe/simple-admin-core/rpc/ent/role"
+	"github.com/neumathe/simple-admin-core/rpc/ent/token"
+	"github.com/neumathe/simple-admin-core/rpc/ent/user"
 )
 
 const (
@@ -10397,7 +10397,6 @@ type UserMutation struct {
 	updated_at         *time.Time
 	status             *uint8
 	addstatus          *int8
-	deleted_at         *time.Time
 	password           *string
 	salt               *string
 	nickname           *string
@@ -10664,55 +10663,6 @@ func (m *UserMutation) ResetStatus() {
 	m.status = nil
 	m.addstatus = nil
 	delete(m.clearedFields, user.FieldStatus)
-}
-
-// SetDeletedAt sets the "deleted_at" field.
-func (m *UserMutation) SetDeletedAt(t time.Time) {
-	m.deleted_at = &t
-}
-
-// DeletedAt returns the value of the "deleted_at" field in the mutation.
-func (m *UserMutation) DeletedAt() (r time.Time, exists bool) {
-	v := m.deleted_at
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldDeletedAt returns the old "deleted_at" field's value of the User entity.
-// If the User object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *UserMutation) OldDeletedAt(ctx context.Context) (v time.Time, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldDeletedAt is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldDeletedAt requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldDeletedAt: %w", err)
-	}
-	return oldValue.DeletedAt, nil
-}
-
-// ClearDeletedAt clears the value of the "deleted_at" field.
-func (m *UserMutation) ClearDeletedAt() {
-	m.deleted_at = nil
-	m.clearedFields[user.FieldDeletedAt] = struct{}{}
-}
-
-// DeletedAtCleared returns if the "deleted_at" field was cleared in this mutation.
-func (m *UserMutation) DeletedAtCleared() bool {
-	_, ok := m.clearedFields[user.FieldDeletedAt]
-	return ok
-}
-
-// ResetDeletedAt resets all changes to the "deleted_at" field.
-func (m *UserMutation) ResetDeletedAt() {
-	m.deleted_at = nil
-	delete(m.clearedFields, user.FieldDeletedAt)
 }
 
 // SetPassword sets the "password" field.
@@ -11286,7 +11236,7 @@ func (m *UserMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *UserMutation) Fields() []string {
-	fields := make([]string, 0, 13)
+	fields := make([]string, 0, 12)
 	if m.created_at != nil {
 		fields = append(fields, user.FieldCreatedAt)
 	}
@@ -11295,9 +11245,6 @@ func (m *UserMutation) Fields() []string {
 	}
 	if m.status != nil {
 		fields = append(fields, user.FieldStatus)
-	}
-	if m.deleted_at != nil {
-		fields = append(fields, user.FieldDeletedAt)
 	}
 	if m.password != nil {
 		fields = append(fields, user.FieldPassword)
@@ -11340,8 +11287,6 @@ func (m *UserMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case user.FieldStatus:
 		return m.Status()
-	case user.FieldDeletedAt:
-		return m.DeletedAt()
 	case user.FieldPassword:
 		return m.Password()
 	case user.FieldSalt:
@@ -11375,8 +11320,6 @@ func (m *UserMutation) OldField(ctx context.Context, name string) (ent.Value, er
 		return m.OldUpdatedAt(ctx)
 	case user.FieldStatus:
 		return m.OldStatus(ctx)
-	case user.FieldDeletedAt:
-		return m.OldDeletedAt(ctx)
 	case user.FieldPassword:
 		return m.OldPassword(ctx)
 	case user.FieldSalt:
@@ -11424,13 +11367,6 @@ func (m *UserMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStatus(v)
-		return nil
-	case user.FieldDeletedAt:
-		v, ok := value.(time.Time)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetDeletedAt(v)
 		return nil
 	case user.FieldPassword:
 		v, ok := value.(string)
@@ -11543,9 +11479,6 @@ func (m *UserMutation) ClearedFields() []string {
 	if m.FieldCleared(user.FieldStatus) {
 		fields = append(fields, user.FieldStatus)
 	}
-	if m.FieldCleared(user.FieldDeletedAt) {
-		fields = append(fields, user.FieldDeletedAt)
-	}
 	if m.FieldCleared(user.FieldDescription) {
 		fields = append(fields, user.FieldDescription)
 	}
@@ -11578,9 +11511,6 @@ func (m *UserMutation) ClearField(name string) error {
 	case user.FieldStatus:
 		m.ClearStatus()
 		return nil
-	case user.FieldDeletedAt:
-		m.ClearDeletedAt()
-		return nil
 	case user.FieldDescription:
 		m.ClearDescription()
 		return nil
@@ -11612,9 +11542,6 @@ func (m *UserMutation) ResetField(name string) error {
 		return nil
 	case user.FieldStatus:
 		m.ResetStatus()
-		return nil
-	case user.FieldDeletedAt:
-		m.ResetDeletedAt()
 		return nil
 	case user.FieldPassword:
 		m.ResetPassword()

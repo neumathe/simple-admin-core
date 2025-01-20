@@ -10,8 +10,8 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	uuid "github.com/gofrs/uuid/v5"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/department"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/user"
+	"github.com/neumathe/simple-admin-core/rpc/ent/department"
+	"github.com/neumathe/simple-admin-core/rpc/ent/user"
 )
 
 // User is the model entity for the User schema.
@@ -26,8 +26,6 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Status 1: normal 2: ban | 状态 1 正常 2 禁用
 	Status uint8 `json:"status,omitempty"`
-	// Delete Time | 删除日期
-	DeletedAt time.Time `json:"deleted_at,omitempty"`
 	// Password | 密码
 	Password string `json:"password,omitempty"`
 	// salt | 密码加盐
@@ -103,7 +101,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullInt64)
 		case user.FieldPassword, user.FieldSalt, user.FieldNickname, user.FieldDescription, user.FieldHomePath, user.FieldMobile, user.FieldEmail, user.FieldAvatar:
 			values[i] = new(sql.NullString)
-		case user.FieldCreatedAt, user.FieldUpdatedAt, user.FieldDeletedAt:
+		case user.FieldCreatedAt, user.FieldUpdatedAt:
 			values[i] = new(sql.NullTime)
 		case user.FieldID:
 			values[i] = new(uuid.UUID)
@@ -145,12 +143,6 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
 				u.Status = uint8(value.Int64)
-			}
-		case user.FieldDeletedAt:
-			if value, ok := values[i].(*sql.NullTime); !ok {
-				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
-			} else if value.Valid {
-				u.DeletedAt = value.Time
 			}
 		case user.FieldPassword:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -265,9 +257,6 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("status=")
 	builder.WriteString(fmt.Sprintf("%v", u.Status))
-	builder.WriteString(", ")
-	builder.WriteString("deleted_at=")
-	builder.WriteString(u.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("password=")
 	builder.WriteString(u.Password)

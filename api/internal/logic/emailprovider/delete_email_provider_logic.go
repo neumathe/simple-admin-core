@@ -8,8 +8,8 @@ import (
 
 	"github.com/neumathe/neumathe-message-center/types/mcms"
 
-	"github.com/suyuan32/simple-admin-core/api/internal/svc"
-	"github.com/suyuan32/simple-admin-core/api/internal/types"
+	"github.com/neumathe/simple-admin-core/api/internal/svc"
+	"github.com/neumathe/simple-admin-core/api/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

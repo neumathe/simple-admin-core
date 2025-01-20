@@ -46,7 +46,14 @@
 		"sms_provider": "短信服务配置",
 		"sms_log": "短信发送日志",
 		"message_sender": "消息发送",
-		"configuration": "参数配置"
+		"configuration": "参数配置",
+		"mcms_notice": "公告管理",
+		"mcms_bnanner": "banner管理",
+		"qbms_subject": "科目管理",
+		"qbms_chapter": "章节管理",
+		"qbms_question": "题库管理",
+		"qbms_star": "题目收藏",
+		"qbms_online_practice": "模拟考试"
 	},
 	"apiDesc": {
 		"createConfiguration": "创建参数配置",
@@ -240,7 +247,19 @@
 		"storageProviderManagement": "云存储服务商管理",
 		"cloudFileManagement": "云文件管理",
 		"cloudFileTagManagement": "云文件标签管理",
-		"configurationManagement": "参数管理"
+		"configurationManagement": "参数管理",
+		"questionBankManagement": "题库管理",
+		"questionManagement": "题目管理",
+		"chapterManagement": "章节管理",
+		"sequentialPractice": "顺序刷题",
+		"memorizeMode": "背题模式",
+		"practiceExams": "模拟考试",
+		"practiceRecord": "做题记录",
+		"starQuestion": "收藏题目",
+		"wrongQuestionBook": "错题本",
+		"wrongQuestionFeedback": "错题反馈",
+		"QuestionBank": "题库",
+		"onlinePractice": "模拟考试"
 	},
 	"login": {
 		"loginSuccessTitle": "登录成功",

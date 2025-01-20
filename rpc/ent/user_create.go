@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	uuid "github.com/gofrs/uuid/v5"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/department"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/position"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/role"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/user"
+	"github.com/neumathe/simple-admin-core/rpc/ent/department"
+	"github.com/neumathe/simple-admin-core/rpc/ent/position"
+	"github.com/neumathe/simple-admin-core/rpc/ent/role"
+	"github.com/neumathe/simple-admin-core/rpc/ent/user"
 )
 
 // UserCreate is the builder for creating a User entity.
@@ -62,20 +62,6 @@ func (uc *UserCreate) SetStatus(u uint8) *UserCreate {
 func (uc *UserCreate) SetNillableStatus(u *uint8) *UserCreate {
 	if u != nil {
 		uc.SetStatus(*u)
-	}
-	return uc
-}
-
-// SetDeletedAt sets the "deleted_at" field.
-func (uc *UserCreate) SetDeletedAt(t time.Time) *UserCreate {
-	uc.mutation.SetDeletedAt(t)
-	return uc
-}
-
-// SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (uc *UserCreate) SetNillableDeletedAt(t *time.Time) *UserCreate {
-	if t != nil {
-		uc.SetDeletedAt(*t)
 	}
 	return uc
 }
@@ -252,9 +238,7 @@ func (uc *UserCreate) Mutation() *UserMutation {
 
 // Save creates the User in the database.
 func (uc *UserCreate) Save(ctx context.Context) (*User, error) {
-	if err := uc.defaults(); err != nil {
-		return nil, err
-	}
+	uc.defaults()
 	return withHooks(ctx, uc.sqlSave, uc.mutation, uc.hooks)
 }
 
@@ -281,18 +265,12 @@ func (uc *UserCreate) ExecX(ctx context.Context) {
 }
 
 // defaults sets the default values of the builder before save.
-func (uc *UserCreate) defaults() error {
+func (uc *UserCreate) defaults() {
 	if _, ok := uc.mutation.CreatedAt(); !ok {
-		if user.DefaultCreatedAt == nil {
-			return fmt.Errorf("ent: uninitialized user.DefaultCreatedAt (forgotten import ent/runtime?)")
-		}
 		v := user.DefaultCreatedAt()
 		uc.mutation.SetCreatedAt(v)
 	}
 	if _, ok := uc.mutation.UpdatedAt(); !ok {
-		if user.DefaultUpdatedAt == nil {
-			return fmt.Errorf("ent: uninitialized user.DefaultUpdatedAt (forgotten import ent/runtime?)")
-		}
 		v := user.DefaultUpdatedAt()
 		uc.mutation.SetUpdatedAt(v)
 	}
@@ -309,13 +287,9 @@ func (uc *UserCreate) defaults() error {
 		uc.mutation.SetDepartmentID(v)
 	}
 	if _, ok := uc.mutation.ID(); !ok {
-		if user.DefaultID == nil {
-			return fmt.Errorf("ent: uninitialized user.DefaultID (forgotten import ent/runtime?)")
-		}
 		v := user.DefaultID()
 		uc.mutation.SetID(v)
 	}
-	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
@@ -384,10 +358,6 @@ func (uc *UserCreate) createSpec() (*User, *sqlgraph.CreateSpec) {
 	if value, ok := uc.mutation.Status(); ok {
 		_spec.SetField(user.FieldStatus, field.TypeUint8, value)
 		_node.Status = value
-	}
-	if value, ok := uc.mutation.DeletedAt(); ok {
-		_spec.SetField(user.FieldDeletedAt, field.TypeTime, value)
-		_node.DeletedAt = value
 	}
 	if value, ok := uc.mutation.Password(); ok {
 		_spec.SetField(user.FieldPassword, field.TypeString, value)

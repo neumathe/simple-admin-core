@@ -6,12 +6,12 @@ import (
 	"github.com/neumathe/simple-admin-common/utils/pointy"
 	"github.com/neumathe/simple-admin-common/utils/uuidx"
 
-	"github.com/suyuan32/simple-admin-core/rpc/ent"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/user"
+	"github.com/neumathe/simple-admin-core/rpc/ent"
+	"github.com/neumathe/simple-admin-core/rpc/ent/user"
 
-	"github.com/suyuan32/simple-admin-core/rpc/internal/svc"
-	"github.com/suyuan32/simple-admin-core/rpc/internal/utils/dberrorhandler"
-	"github.com/suyuan32/simple-admin-core/rpc/types/core"
+	"github.com/neumathe/simple-admin-core/rpc/internal/svc"
+	"github.com/neumathe/simple-admin-core/rpc/internal/utils/dberrorhandler"
+	"github.com/neumathe/simple-admin-core/rpc/types/core"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

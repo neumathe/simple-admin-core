@@ -11,11 +11,11 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/department"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/position"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/predicate"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/role"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/user"
+	"github.com/neumathe/simple-admin-core/rpc/ent/department"
+	"github.com/neumathe/simple-admin-core/rpc/ent/position"
+	"github.com/neumathe/simple-admin-core/rpc/ent/predicate"
+	"github.com/neumathe/simple-admin-core/rpc/ent/role"
+	"github.com/neumathe/simple-admin-core/rpc/ent/user"
 )
 
 // UserUpdate is the builder for updating User entities.
@@ -62,26 +62,6 @@ func (uu *UserUpdate) AddStatus(u int8) *UserUpdate {
 // ClearStatus clears the value of the "status" field.
 func (uu *UserUpdate) ClearStatus() *UserUpdate {
 	uu.mutation.ClearStatus()
-	return uu
-}
-
-// SetDeletedAt sets the "deleted_at" field.
-func (uu *UserUpdate) SetDeletedAt(t time.Time) *UserUpdate {
-	uu.mutation.SetDeletedAt(t)
-	return uu
-}
-
-// SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableDeletedAt(t *time.Time) *UserUpdate {
-	if t != nil {
-		uu.SetDeletedAt(*t)
-	}
-	return uu
-}
-
-// ClearDeletedAt clears the value of the "deleted_at" field.
-func (uu *UserUpdate) ClearDeletedAt() *UserUpdate {
-	uu.mutation.ClearDeletedAt()
 	return uu
 }
 
@@ -345,9 +325,7 @@ func (uu *UserUpdate) RemoveRoles(r ...*Role) *UserUpdate {
 
 // Save executes the query and returns the number of nodes affected by the update operation.
 func (uu *UserUpdate) Save(ctx context.Context) (int, error) {
-	if err := uu.defaults(); err != nil {
-		return 0, err
-	}
+	uu.defaults()
 	return withHooks(ctx, uu.sqlSave, uu.mutation, uu.hooks)
 }
 
@@ -374,15 +352,11 @@ func (uu *UserUpdate) ExecX(ctx context.Context) {
 }
 
 // defaults sets the default values of the builder before save.
-func (uu *UserUpdate) defaults() error {
+func (uu *UserUpdate) defaults() {
 	if _, ok := uu.mutation.UpdatedAt(); !ok {
-		if user.UpdateDefaultUpdatedAt == nil {
-			return fmt.Errorf("ent: uninitialized user.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
-		}
 		v := user.UpdateDefaultUpdatedAt()
 		uu.mutation.SetUpdatedAt(v)
 	}
-	return nil
 }
 
 // Modify adds a statement modifier for attaching custom logic to the UPDATE statement.
@@ -411,12 +385,6 @@ func (uu *UserUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if uu.mutation.StatusCleared() {
 		_spec.ClearField(user.FieldStatus, field.TypeUint8)
-	}
-	if value, ok := uu.mutation.DeletedAt(); ok {
-		_spec.SetField(user.FieldDeletedAt, field.TypeTime, value)
-	}
-	if uu.mutation.DeletedAtCleared() {
-		_spec.ClearField(user.FieldDeletedAt, field.TypeTime)
 	}
 	if value, ok := uu.mutation.Password(); ok {
 		_spec.SetField(user.FieldPassword, field.TypeString, value)
@@ -625,26 +593,6 @@ func (uuo *UserUpdateOne) AddStatus(u int8) *UserUpdateOne {
 // ClearStatus clears the value of the "status" field.
 func (uuo *UserUpdateOne) ClearStatus() *UserUpdateOne {
 	uuo.mutation.ClearStatus()
-	return uuo
-}
-
-// SetDeletedAt sets the "deleted_at" field.
-func (uuo *UserUpdateOne) SetDeletedAt(t time.Time) *UserUpdateOne {
-	uuo.mutation.SetDeletedAt(t)
-	return uuo
-}
-
-// SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableDeletedAt(t *time.Time) *UserUpdateOne {
-	if t != nil {
-		uuo.SetDeletedAt(*t)
-	}
-	return uuo
-}
-
-// ClearDeletedAt clears the value of the "deleted_at" field.
-func (uuo *UserUpdateOne) ClearDeletedAt() *UserUpdateOne {
-	uuo.mutation.ClearDeletedAt()
 	return uuo
 }
 
@@ -921,9 +869,7 @@ func (uuo *UserUpdateOne) Select(field string, fields ...string) *UserUpdateOne 
 
 // Save executes the query and returns the updated User entity.
 func (uuo *UserUpdateOne) Save(ctx context.Context) (*User, error) {
-	if err := uuo.defaults(); err != nil {
-		return nil, err
-	}
+	uuo.defaults()
 	return withHooks(ctx, uuo.sqlSave, uuo.mutation, uuo.hooks)
 }
 
@@ -950,15 +896,11 @@ func (uuo *UserUpdateOne) ExecX(ctx context.Context) {
 }
 
 // defaults sets the default values of the builder before save.
-func (uuo *UserUpdateOne) defaults() error {
+func (uuo *UserUpdateOne) defaults() {
 	if _, ok := uuo.mutation.UpdatedAt(); !ok {
-		if user.UpdateDefaultUpdatedAt == nil {
-			return fmt.Errorf("ent: uninitialized user.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
-		}
 		v := user.UpdateDefaultUpdatedAt()
 		uuo.mutation.SetUpdatedAt(v)
 	}
-	return nil
 }
 
 // Modify adds a statement modifier for attaching custom logic to the UPDATE statement.
@@ -1004,12 +946,6 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	}
 	if uuo.mutation.StatusCleared() {
 		_spec.ClearField(user.FieldStatus, field.TypeUint8)
-	}
-	if value, ok := uuo.mutation.DeletedAt(); ok {
-		_spec.SetField(user.FieldDeletedAt, field.TypeTime, value)
-	}
-	if uuo.mutation.DeletedAtCleared() {
-		_spec.ClearField(user.FieldDeletedAt, field.TypeTime)
 	}
 	if value, ok := uuo.mutation.Password(); ok {
 		_spec.SetField(user.FieldPassword, field.TypeString, value)

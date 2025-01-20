@@ -2241,30 +2241,6 @@ func (u *UserCreate) SetNotNilStatus(value *uint8) *UserCreate {
 }
 
 // set field if value's pointer is not nil.
-func (u *UserUpdate) SetNotNilDeletedAt(value *time.Time) *UserUpdate {
-	if value != nil {
-		return u.SetDeletedAt(*value)
-	}
-	return u
-}
-
-// set field if value's pointer is not nil.
-func (u *UserUpdateOne) SetNotNilDeletedAt(value *time.Time) *UserUpdateOne {
-	if value != nil {
-		return u.SetDeletedAt(*value)
-	}
-	return u
-}
-
-// set field if value's pointer is not nil.
-func (u *UserCreate) SetNotNilDeletedAt(value *time.Time) *UserCreate {
-	if value != nil {
-		return u.SetDeletedAt(*value)
-	}
-	return u
-}
-
-// set field if value's pointer is not nil.
 func (u *UserUpdate) SetNotNilPassword(value *string) *UserUpdate {
 	if value != nil {
 		return u.SetPassword(*value)

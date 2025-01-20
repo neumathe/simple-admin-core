@@ -7,13 +7,13 @@ import (
 	"github.com/neumathe/simple-admin-common/i18n"
 	"github.com/neumathe/simple-admin-common/msg/logmsg"
 	"github.com/neumathe/simple-admin-common/utils/uuidx"
-	"github.com/suyuan32/simple-admin-core/rpc/ent/token"
-	"github.com/suyuan32/simple-admin-core/rpc/internal/utils/dberrorhandler"
+	"github.com/neumathe/simple-admin-core/rpc/ent/token"
+	"github.com/neumathe/simple-admin-core/rpc/internal/utils/dberrorhandler"
 	"github.com/zeromicro/go-zero/core/errorx"
 	"time"
 
-	"github.com/suyuan32/simple-admin-core/rpc/internal/svc"
-	"github.com/suyuan32/simple-admin-core/rpc/types/core"
+	"github.com/neumathe/simple-admin-core/rpc/internal/svc"
+	"github.com/neumathe/simple-admin-core/rpc/types/core"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

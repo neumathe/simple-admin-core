@@ -5,7 +5,6 @@ package user
 import (
 	"time"
 
-	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	uuid "github.com/gofrs/uuid/v5"
@@ -22,8 +21,6 @@ const (
 	FieldUpdatedAt = "updated_at"
 	// FieldStatus holds the string denoting the status field in the database.
 	FieldStatus = "status"
-	// FieldDeletedAt holds the string denoting the deleted_at field in the database.
-	FieldDeletedAt = "deleted_at"
 	// FieldPassword holds the string denoting the password field in the database.
 	FieldPassword = "password"
 	// FieldSalt holds the string denoting the salt field in the database.
@@ -75,7 +72,6 @@ var Columns = []string{
 	FieldCreatedAt,
 	FieldUpdatedAt,
 	FieldStatus,
-	FieldDeletedAt,
 	FieldPassword,
 	FieldSalt,
 	FieldNickname,
@@ -106,14 +102,7 @@ func ValidColumn(column string) bool {
 	return false
 }
 
-// Note that the variables below are initialized by the runtime
-// package on the initialization of the application. Therefore,
-// it should be imported in the main as follows:
-//
-//	import _ "github.com/suyuan32/simple-admin-core/rpc/ent/runtime"
 var (
-	Hooks        [1]ent.Hook
-	Interceptors [1]ent.Interceptor
 	// DefaultCreatedAt holds the default value on creation for the "created_at" field.
 	DefaultCreatedAt func() time.Time
 	// DefaultUpdatedAt holds the default value on creation for the "updated_at" field.
@@ -151,11 +140,6 @@ func ByUpdatedAt(opts ...sql.OrderTermOption) OrderOption {
 // ByStatus orders the results by the status field.
 func ByStatus(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldStatus, opts...).ToFunc()
-}
-
-// ByDeletedAt orders the results by the deleted_at field.
-func ByDeletedAt(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldDeletedAt, opts...).ToFunc()
 }
 
 // ByPassword orders the results by the password field.
