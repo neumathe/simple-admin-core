@@ -238,6 +238,9 @@ type UserListReq struct {
 	DepartmentId *uint64 `json:"departmentId,optional"`
 	// User's position id | 用户的职位ID
 	PositionId *uint64 `json:"positionId,optional"`
+	// Description | 描述
+	// max length : 100
+	Description *string `json:"description,optional" validate:"omitempty,max=100"`
 }
 
 // User information response | 用户信息返回体
@@ -1222,6 +1225,8 @@ type DictionaryDetailInfo struct {
 	// Sort | 排序
 	// max : 10000
 	Sort *uint32 `json:"sort,optional" validate:"omitempty,lt=10000"`
+	// Title I18n Trans | 标题国际化后
+	Trans string `json:"trans,optional"`
 }
 
 // The response data of dictionary detail list | 字典键值列表数据
