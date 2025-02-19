@@ -69,4 +69,6 @@ service Core {
   rpc getUserByEmail (EmailReq) returns (UserInfo);
   // group: user
   rpc getUserByPhone (PhoneReq) returns (UserInfo);
+  // group: user
+  rpc getBatchUserById (UUIDsReq) returns (UserListResp);
 }

@@ -144,6 +144,7 @@ type (
 		DeleteUser(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 		GetUserByEmail(ctx context.Context, in *EmailReq, opts ...grpc.CallOption) (*UserInfo, error)
 		GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...grpc.CallOption) (*UserInfo, error)
+		GetBatchUserById(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*UserListResp, error)
 	}
 
 	defaultCore struct {
@@ -490,4 +491,9 @@ func (m *defaultCore) GetUserByEmail(ctx context.Context, in *EmailReq, opts ...
 func (m *defaultCore) GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...grpc.CallOption) (*UserInfo, error) {
 	client := core.NewCoreClient(m.cli.Conn())
 	return client.GetUserByPhone(ctx, in, opts...)
+}
+
+func (m *defaultCore) GetBatchUserById(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*UserListResp, error) {
+	client := core.NewCoreClient(m.cli.Conn())
+	return client.GetBatchUserById(ctx, in, opts...)
 }

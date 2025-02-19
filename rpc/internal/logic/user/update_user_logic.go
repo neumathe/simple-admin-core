@@ -85,6 +85,7 @@ func (l *UpdateUserLogic) UpdateUser(in *core.UserInfo) (*core.BaseResp, error) 
 	if err != nil {
 		return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
 	}
+	l.svcCtx.Redis.Del(l.ctx, "userInfo_"+*in.Id)
 
 	return &core.BaseResp{
 		Msg: i18n.Success,

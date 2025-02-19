@@ -84,6 +84,7 @@ const (
 	Core_DeleteUser_FullMethodName                          = "/core.Core/deleteUser"
 	Core_GetUserByEmail_FullMethodName                      = "/core.Core/getUserByEmail"
 	Core_GetUserByPhone_FullMethodName                      = "/core.Core/getUserByPhone"
+	Core_GetBatchUserById_FullMethodName                    = "/core.Core/getBatchUserById"
 )
 
 // CoreClient is the client API for Core service.
@@ -230,6 +231,8 @@ type CoreClient interface {
 	GetUserByEmail(ctx context.Context, in *EmailReq, opts ...grpc.CallOption) (*UserInfo, error)
 	// group: user
 	GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...grpc.CallOption) (*UserInfo, error)
+	// group: user
+	GetBatchUserById(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*UserListResp, error)
 }
 
 type coreClient struct {
@@ -890,6 +893,16 @@ func (c *coreClient) GetUserByPhone(ctx context.Context, in *PhoneReq, opts ...g
 	return out, nil
 }
 
+func (c *coreClient) GetBatchUserById(ctx context.Context, in *UUIDsReq, opts ...grpc.CallOption) (*UserListResp, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UserListResp)
+	err := c.cc.Invoke(ctx, Core_GetBatchUserById_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CoreServer is the server API for Core service.
 // All implementations must embed UnimplementedCoreServer
 // for forward compatibility.
@@ -1034,6 +1047,8 @@ type CoreServer interface {
 	GetUserByEmail(context.Context, *EmailReq) (*UserInfo, error)
 	// group: user
 	GetUserByPhone(context.Context, *PhoneReq) (*UserInfo, error)
+	// group: user
+	GetBatchUserById(context.Context, *UUIDsReq) (*UserListResp, error)
 	mustEmbedUnimplementedCoreServer()
 }
 
@@ -1238,6 +1253,9 @@ func (UnimplementedCoreServer) GetUserByEmail(context.Context, *EmailReq) (*User
 }
 func (UnimplementedCoreServer) GetUserByPhone(context.Context, *PhoneReq) (*UserInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserByPhone not implemented")
+}
+func (UnimplementedCoreServer) GetBatchUserById(context.Context, *UUIDsReq) (*UserListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBatchUserById not implemented")
 }
 func (UnimplementedCoreServer) mustEmbedUnimplementedCoreServer() {}
 func (UnimplementedCoreServer) testEmbeddedByValue()              {}
@@ -2430,6 +2448,24 @@ func _Core_GetUserByPhone_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Core_GetBatchUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UUIDsReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CoreServer).GetBatchUserById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Core_GetBatchUserById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CoreServer).GetBatchUserById(ctx, req.(*UUIDsReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Core_ServiceDesc is the grpc.ServiceDesc for Core service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2696,6 +2732,10 @@ var Core_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "getUserByPhone",
 			Handler:    _Core_GetUserByPhone_Handler,
+		},
+		{
+			MethodName: "getBatchUserById",
+			Handler:    _Core_GetBatchUserById_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

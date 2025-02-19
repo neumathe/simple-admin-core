@@ -368,3 +368,8 @@ func (s *CoreServer) GetUserByPhone(ctx context.Context, in *core.PhoneReq) (*co
 	l := user.NewGetUserByPhoneLogic(ctx, s.svcCtx)
 	return l.GetUserByPhone(in)
 }
+
+func (s *CoreServer) GetBatchUserById(ctx context.Context, in *core.UUIDsReq) (*core.UserListResp, error) {
+	l := user.NewGetBatchUserByIdLogic(ctx, s.svcCtx)
+	return l.GetBatchUserById(in)
+}

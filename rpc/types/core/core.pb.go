@@ -4629,7 +4629,7 @@ var file_rpc_core_proto_rawDesc = []byte{
 	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x29, 0x0a, 0x0b, 0x55, 0x73,
 	0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x71, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65,
 	0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73, 0x65,
-	0x72, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0xec, 0x1c, 0x0a, 0x04, 0x43, 0x6f, 0x72, 0x65, 0x12, 0x2c,
+	0x72, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0xa4, 0x1d, 0x0a, 0x04, 0x43, 0x6f, 0x72, 0x65, 0x12, 0x2c,
 	0x0a, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x70, 0x69, 0x12, 0x0d, 0x2e, 0x63, 0x6f,
 	0x72, 0x65, 0x2e, 0x41, 0x70, 0x69, 0x49, 0x6e, 0x66, 0x6f, 0x1a, 0x10, 0x2e, 0x63, 0x6f, 0x72,
 	0x65, 0x2e, 0x42, 0x61, 0x73, 0x65, 0x49, 0x44, 0x52, 0x65, 0x73, 0x70, 0x12, 0x2a, 0x0a, 0x09,
@@ -4860,8 +4860,11 @@ var file_rpc_core_proto_rawDesc = []byte{
 	0x66, 0x6f, 0x12, 0x30, 0x0a, 0x0e, 0x67, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x42, 0x79, 0x50,
 	0x68, 0x6f, 0x6e, 0x65, 0x12, 0x0e, 0x2e, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x50, 0x68, 0x6f, 0x6e,
 	0x65, 0x52, 0x65, 0x71, 0x1a, 0x0e, 0x2e, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x55, 0x73, 0x65, 0x72,
-	0x49, 0x6e, 0x66, 0x6f, 0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x49, 0x6e, 0x66, 0x6f, 0x12, 0x36, 0x0a, 0x10, 0x67, 0x65, 0x74, 0x42, 0x61, 0x74, 0x63, 0x68,
+	0x55, 0x73, 0x65, 0x72, 0x42, 0x79, 0x49, 0x64, 0x12, 0x0e, 0x2e, 0x63, 0x6f, 0x72, 0x65, 0x2e,
+	0x55, 0x55, 0x49, 0x44, 0x73, 0x52, 0x65, 0x71, 0x1a, 0x12, 0x2e, 0x63, 0x6f, 0x72, 0x65, 0x2e,
+	0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x42, 0x08, 0x5a, 0x06,
+	0x2e, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -5012,73 +5015,75 @@ var file_rpc_core_proto_depIdxs = []int32{
 	49, // 75: core.Core.deleteUser:input_type -> core.UUIDsReq
 	21, // 76: core.Core.getUserByEmail:input_type -> core.EmailReq
 	36, // 77: core.Core.getUserByPhone:input_type -> core.PhoneReq
-	3,  // 78: core.Core.createApi:output_type -> core.BaseIDResp
-	5,  // 79: core.Core.updateApi:output_type -> core.BaseResp
-	2,  // 80: core.Core.getApiList:output_type -> core.ApiListResp
-	0,  // 81: core.Core.getApiById:output_type -> core.ApiInfo
-	5,  // 82: core.Core.deleteApi:output_type -> core.BaseResp
-	44, // 83: core.Core.getMenuAuthority:output_type -> core.RoleMenuAuthorityResp
-	5,  // 84: core.Core.createOrUpdateMenuAuthority:output_type -> core.BaseResp
-	5,  // 85: core.Core.initDatabase:output_type -> core.BaseResp
-	3,  // 86: core.Core.createConfiguration:output_type -> core.BaseIDResp
-	5,  // 87: core.Core.updateConfiguration:output_type -> core.BaseResp
-	11, // 88: core.Core.getConfigurationList:output_type -> core.ConfigurationListResp
-	9,  // 89: core.Core.getConfigurationById:output_type -> core.ConfigurationInfo
-	5,  // 90: core.Core.deleteConfiguration:output_type -> core.BaseResp
-	3,  // 91: core.Core.createDepartment:output_type -> core.BaseIDResp
-	5,  // 92: core.Core.updateDepartment:output_type -> core.BaseResp
-	14, // 93: core.Core.getDepartmentList:output_type -> core.DepartmentListResp
-	12, // 94: core.Core.getDepartmentById:output_type -> core.DepartmentInfo
-	5,  // 95: core.Core.deleteDepartment:output_type -> core.BaseResp
-	3,  // 96: core.Core.createDictionary:output_type -> core.BaseIDResp
-	5,  // 97: core.Core.updateDictionary:output_type -> core.BaseResp
-	20, // 98: core.Core.getDictionaryList:output_type -> core.DictionaryListResp
-	18, // 99: core.Core.getDictionaryById:output_type -> core.DictionaryInfo
-	5,  // 100: core.Core.deleteDictionary:output_type -> core.BaseResp
-	3,  // 101: core.Core.createDictionaryDetail:output_type -> core.BaseIDResp
-	5,  // 102: core.Core.updateDictionaryDetail:output_type -> core.BaseResp
-	17, // 103: core.Core.getDictionaryDetailList:output_type -> core.DictionaryDetailListResp
-	15, // 104: core.Core.getDictionaryDetailById:output_type -> core.DictionaryDetailInfo
-	5,  // 105: core.Core.deleteDictionaryDetail:output_type -> core.BaseResp
-	17, // 106: core.Core.getDictionaryDetailByDictionaryName:output_type -> core.DictionaryDetailListResp
-	3,  // 107: core.Core.createMenu:output_type -> core.BaseIDResp
-	5,  // 108: core.Core.updateMenu:output_type -> core.BaseResp
-	5,  // 109: core.Core.deleteMenu:output_type -> core.BaseResp
-	26, // 110: core.Core.getMenuListByRole:output_type -> core.MenuInfoList
-	26, // 111: core.Core.getMenuList:output_type -> core.MenuInfoList
-	3,  // 112: core.Core.createOauthProvider:output_type -> core.BaseIDResp
-	5,  // 113: core.Core.updateOauthProvider:output_type -> core.BaseResp
-	33, // 114: core.Core.getOauthProviderList:output_type -> core.OauthProviderListResp
-	31, // 115: core.Core.getOauthProviderById:output_type -> core.OauthProviderInfo
-	5,  // 116: core.Core.deleteOauthProvider:output_type -> core.BaseResp
-	34, // 117: core.Core.oauthLogin:output_type -> core.OauthRedirectResp
-	50, // 118: core.Core.oauthCallback:output_type -> core.UserInfo
-	3,  // 119: core.Core.createPosition:output_type -> core.BaseIDResp
-	5,  // 120: core.Core.updatePosition:output_type -> core.BaseResp
-	39, // 121: core.Core.getPositionList:output_type -> core.PositionListResp
-	37, // 122: core.Core.getPositionById:output_type -> core.PositionInfo
-	5,  // 123: core.Core.deletePosition:output_type -> core.BaseResp
-	3,  // 124: core.Core.createRole:output_type -> core.BaseIDResp
-	5,  // 125: core.Core.updateRole:output_type -> core.BaseResp
-	42, // 126: core.Core.getRoleList:output_type -> core.RoleListResp
-	40, // 127: core.Core.getRoleById:output_type -> core.RoleInfo
-	5,  // 128: core.Core.deleteRole:output_type -> core.BaseResp
-	6,  // 129: core.Core.createToken:output_type -> core.BaseUUIDResp
-	5,  // 130: core.Core.deleteToken:output_type -> core.BaseResp
-	47, // 131: core.Core.getTokenList:output_type -> core.TokenListResp
-	45, // 132: core.Core.getTokenById:output_type -> core.TokenInfo
-	5,  // 133: core.Core.blockUserAllToken:output_type -> core.BaseResp
-	5,  // 134: core.Core.BlockUserTokenBySource:output_type -> core.BaseResp
-	5,  // 135: core.Core.updateToken:output_type -> core.BaseResp
-	6,  // 136: core.Core.createUser:output_type -> core.BaseUUIDResp
-	5,  // 137: core.Core.updateUser:output_type -> core.BaseResp
-	52, // 138: core.Core.getUserList:output_type -> core.UserListResp
-	50, // 139: core.Core.getUserById:output_type -> core.UserInfo
-	5,  // 140: core.Core.deleteUser:output_type -> core.BaseResp
-	50, // 141: core.Core.getUserByEmail:output_type -> core.UserInfo
-	50, // 142: core.Core.getUserByPhone:output_type -> core.UserInfo
-	78, // [78:143] is the sub-list for method output_type
-	13, // [13:78] is the sub-list for method input_type
+	49, // 78: core.Core.getBatchUserById:input_type -> core.UUIDsReq
+	3,  // 79: core.Core.createApi:output_type -> core.BaseIDResp
+	5,  // 80: core.Core.updateApi:output_type -> core.BaseResp
+	2,  // 81: core.Core.getApiList:output_type -> core.ApiListResp
+	0,  // 82: core.Core.getApiById:output_type -> core.ApiInfo
+	5,  // 83: core.Core.deleteApi:output_type -> core.BaseResp
+	44, // 84: core.Core.getMenuAuthority:output_type -> core.RoleMenuAuthorityResp
+	5,  // 85: core.Core.createOrUpdateMenuAuthority:output_type -> core.BaseResp
+	5,  // 86: core.Core.initDatabase:output_type -> core.BaseResp
+	3,  // 87: core.Core.createConfiguration:output_type -> core.BaseIDResp
+	5,  // 88: core.Core.updateConfiguration:output_type -> core.BaseResp
+	11, // 89: core.Core.getConfigurationList:output_type -> core.ConfigurationListResp
+	9,  // 90: core.Core.getConfigurationById:output_type -> core.ConfigurationInfo
+	5,  // 91: core.Core.deleteConfiguration:output_type -> core.BaseResp
+	3,  // 92: core.Core.createDepartment:output_type -> core.BaseIDResp
+	5,  // 93: core.Core.updateDepartment:output_type -> core.BaseResp
+	14, // 94: core.Core.getDepartmentList:output_type -> core.DepartmentListResp
+	12, // 95: core.Core.getDepartmentById:output_type -> core.DepartmentInfo
+	5,  // 96: core.Core.deleteDepartment:output_type -> core.BaseResp
+	3,  // 97: core.Core.createDictionary:output_type -> core.BaseIDResp
+	5,  // 98: core.Core.updateDictionary:output_type -> core.BaseResp
+	20, // 99: core.Core.getDictionaryList:output_type -> core.DictionaryListResp
+	18, // 100: core.Core.getDictionaryById:output_type -> core.DictionaryInfo
+	5,  // 101: core.Core.deleteDictionary:output_type -> core.BaseResp
+	3,  // 102: core.Core.createDictionaryDetail:output_type -> core.BaseIDResp
+	5,  // 103: core.Core.updateDictionaryDetail:output_type -> core.BaseResp
+	17, // 104: core.Core.getDictionaryDetailList:output_type -> core.DictionaryDetailListResp
+	15, // 105: core.Core.getDictionaryDetailById:output_type -> core.DictionaryDetailInfo
+	5,  // 106: core.Core.deleteDictionaryDetail:output_type -> core.BaseResp
+	17, // 107: core.Core.getDictionaryDetailByDictionaryName:output_type -> core.DictionaryDetailListResp
+	3,  // 108: core.Core.createMenu:output_type -> core.BaseIDResp
+	5,  // 109: core.Core.updateMenu:output_type -> core.BaseResp
+	5,  // 110: core.Core.deleteMenu:output_type -> core.BaseResp
+	26, // 111: core.Core.getMenuListByRole:output_type -> core.MenuInfoList
+	26, // 112: core.Core.getMenuList:output_type -> core.MenuInfoList
+	3,  // 113: core.Core.createOauthProvider:output_type -> core.BaseIDResp
+	5,  // 114: core.Core.updateOauthProvider:output_type -> core.BaseResp
+	33, // 115: core.Core.getOauthProviderList:output_type -> core.OauthProviderListResp
+	31, // 116: core.Core.getOauthProviderById:output_type -> core.OauthProviderInfo
+	5,  // 117: core.Core.deleteOauthProvider:output_type -> core.BaseResp
+	34, // 118: core.Core.oauthLogin:output_type -> core.OauthRedirectResp
+	50, // 119: core.Core.oauthCallback:output_type -> core.UserInfo
+	3,  // 120: core.Core.createPosition:output_type -> core.BaseIDResp
+	5,  // 121: core.Core.updatePosition:output_type -> core.BaseResp
+	39, // 122: core.Core.getPositionList:output_type -> core.PositionListResp
+	37, // 123: core.Core.getPositionById:output_type -> core.PositionInfo
+	5,  // 124: core.Core.deletePosition:output_type -> core.BaseResp
+	3,  // 125: core.Core.createRole:output_type -> core.BaseIDResp
+	5,  // 126: core.Core.updateRole:output_type -> core.BaseResp
+	42, // 127: core.Core.getRoleList:output_type -> core.RoleListResp
+	40, // 128: core.Core.getRoleById:output_type -> core.RoleInfo
+	5,  // 129: core.Core.deleteRole:output_type -> core.BaseResp
+	6,  // 130: core.Core.createToken:output_type -> core.BaseUUIDResp
+	5,  // 131: core.Core.deleteToken:output_type -> core.BaseResp
+	47, // 132: core.Core.getTokenList:output_type -> core.TokenListResp
+	45, // 133: core.Core.getTokenById:output_type -> core.TokenInfo
+	5,  // 134: core.Core.blockUserAllToken:output_type -> core.BaseResp
+	5,  // 135: core.Core.BlockUserTokenBySource:output_type -> core.BaseResp
+	5,  // 136: core.Core.updateToken:output_type -> core.BaseResp
+	6,  // 137: core.Core.createUser:output_type -> core.BaseUUIDResp
+	5,  // 138: core.Core.updateUser:output_type -> core.BaseResp
+	52, // 139: core.Core.getUserList:output_type -> core.UserListResp
+	50, // 140: core.Core.getUserById:output_type -> core.UserInfo
+	5,  // 141: core.Core.deleteUser:output_type -> core.BaseResp
+	50, // 142: core.Core.getUserByEmail:output_type -> core.UserInfo
+	50, // 143: core.Core.getUserByPhone:output_type -> core.UserInfo
+	52, // 144: core.Core.getBatchUserById:output_type -> core.UserListResp
+	79, // [79:145] is the sub-list for method output_type
+	13, // [13:79] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name

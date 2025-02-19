@@ -50,14 +50,16 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginResp, err erro
 				Email: req.EmailOrPhone,
 			})
 			if err != nil {
-				return nil, err
+				l.Logger.Error(err)
+				return nil, errorx.NewCodeInvalidArgumentError("login.wrongUsernameOrPassword")
 			}
 		} else if phoneRegex.MatchString(req.EmailOrPhone) {
 			user, err = l.svcCtx.CoreRpc.GetUserByPhone(l.ctx, &core.PhoneReq{
 				Phone: req.EmailOrPhone,
 			})
 			if err != nil {
-				return nil, err
+				l.Logger.Error(err)
+				return nil, errorx.NewCodeInvalidArgumentError("login.wrongUsernameOrPassword")
 			}
 		} else {
 			return nil, errorx.NewInvalidArgumentError("login.emailOrMobileFormatError")

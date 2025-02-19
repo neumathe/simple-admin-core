@@ -14,7 +14,7 @@ DatabaseConf:
 
 RedisConf:
   Host: localhost:6379
-  Db: 0
+  Db: 1
 
 Log:
   ServiceName: coreRpcLogger

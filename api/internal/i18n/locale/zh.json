@@ -53,7 +53,9 @@
 		"qbms_chapter": "章节管理",
 		"qbms_question": "题库管理",
 		"qbms_star": "题目收藏",
-		"qbms_online_practice": "模拟考试"
+		"qbms_online_practice": "模拟考试",
+		"community_note": "笔记",
+		"community_comment": "评论"
 	},
 	"apiDesc": {
 		"createConfiguration": "创建参数配置",
@@ -252,14 +254,17 @@
 		"questionManagement": "题目管理",
 		"chapterManagement": "章节管理",
 		"sequentialPractice": "顺序刷题",
+		"unorderedPractice": "乱序刷题",
 		"memorizeMode": "背题模式",
 		"practiceExams": "模拟考试",
 		"practiceRecord": "做题记录",
-		"starQuestion": "收藏题目",
+		"starQuestion": "题目收藏",
 		"wrongQuestionBook": "错题本",
 		"wrongQuestionFeedback": "错题反馈",
 		"QuestionBank": "题库",
-		"onlinePractice": "模拟考试"
+		"onlinePractice": "模拟考试",
+		"onlinePracticeHistory": "刷题记录",
+		"searchQuestion": "题目搜索"
 	},
 	"login": {
 		"loginSuccessTitle": "登录成功",
