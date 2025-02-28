@@ -53,6 +53,7 @@ ProjectConf:
   AllowInit: true # if false, ban initialization
   RefreshTokenPeriod: 24 # refresh token valid period, unit: hour | 刷新 token 的有效期，单位：小时
   AccessTokenPeriod: 1 # access token valid period, unit: hour | 短期 token 的有效期，单位：小时
+  PDFDownloadPrefix: xxx # the prefix of pdf download url
 
 CasbinConf:
   ModelText: |

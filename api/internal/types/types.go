@@ -1375,6 +1375,45 @@ type TaskLogInfoResp struct {
 	Data TaskLogInfo `json:"data"`
 }
 
+// swagger:model PdfTaskInfo
+type PdfTaskInfo struct {
+	Id            string `json:"id"`
+	CreatedAt     int64  `json:"createdAt"`
+	UpdatedAt     int64  `json:"updatedAt"`
+	CreatedBy     string `json:"createdBy"`
+	Status        int32  `json:"status"`
+	Message       string `json:"message"`
+	QuestionCount int32  `json:"questionCount"`
+	FileName      string `json:"fileName"`
+	Duration      int64  `json:"duration"`
+	StartedAt     int64  `json:"startedAt"`
+	DownloadURL   string `json:"downloadUrl"`
+}
+
+type PdfTaskInfoList struct {
+	Total uint64        `json:"total"`
+	Data  []PdfTaskInfo `json:"data"`
+}
+
+// swagger:model PdfTaskInfoListResp
+type PdfTaskInfoListResp struct {
+	BaseDataInfo
+	Data PdfTaskInfoList `json:"data"`
+}
+
+// swagger:model PdfTaskListReq
+type PdfTaskListReq struct {
+	PageInfo
+}
+
+// Task information response | 定时任务信息返回体
+// swagger:model PdfTaskInfoResp
+type PdfTaskInfoResp struct {
+	BaseDataInfo
+	// Task information | 定时任务数据
+	Data PdfTaskInfo `json:"data"`
+}
+
 // The response data of email log information | 电子邮件日志信息
 // swagger:model EmailLogInfo
 type EmailLogInfo struct {

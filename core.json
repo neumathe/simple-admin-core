@@ -1900,6 +1900,62 @@
         }
       }
     },
+    "/pdflog": {
+      "post": {
+        "description": "Create task information | 创建定时任务",
+        "tags": [
+          "pdftasklog"
+        ],
+        "summary": "Create task information | 创建定时任务",
+        "operationId": "GetPdfTaskInfo",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/UUIDReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BaseMsgResp",
+            "schema": {
+              "$ref": "#/definitions/BaseMsgResp"
+            }
+          }
+        }
+      }
+    },
+    "/pdflog/list": {
+      "post": {
+        "description": "Get task list | 获取定时任务列表",
+        "tags": [
+          "pdftasklog"
+        ],
+        "summary": "Get task list | 获取定时任务列表",
+        "operationId": "GetPdfTaskList",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/PdfTaskListReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PdfTaskInfoListResp",
+            "schema": {
+              "$ref": "#/definitions/PdfTaskInfoListResp"
+            }
+          }
+        }
+      }
+    },
     "/position": {
       "post": {
         "description": "Get position by ID | 通过ID获取职位",
@@ -3486,7 +3542,7 @@
           "x-go-name": "Path"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ApiAuthorityListInfo": {
       "description": "The  data of api authorization list | API授权列表数据",
@@ -3507,7 +3563,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ApiAuthorityListResp": {
       "description": "The response data of api authorization list | API授权列表返回数据",
@@ -3531,7 +3587,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ApiInfo": {
       "description": "The API information | API信息",
@@ -3598,7 +3654,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ApiInfoResp": {
       "description": "API information response | API信息返回体",
@@ -3622,7 +3678,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ApiListInfo": {
       "description": "API list data | API 列表数据",
@@ -3643,7 +3699,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ApiListReq": {
       "description": "Get API list request params | API列表请求参数",
@@ -3703,7 +3759,7 @@
           "x-go-name": "ServiceName"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ApiListResp": {
       "description": "The response data of API list | API列表数据",
@@ -3727,7 +3783,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "BaseDataInfo": {
       "description": "The basic response with data | 基础带数据信息",
@@ -3750,7 +3806,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "BaseIDInfo": {
       "description": "The base ID response data | 基础ID信息",
@@ -3775,7 +3831,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "BaseListInfo": {
       "description": "The basic response with data | 基础带数据信息",
@@ -3793,7 +3849,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "BaseMsgResp": {
       "description": "The basic response without data | 基础不带数据信息",
@@ -3811,7 +3867,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "BaseUUIDInfo": {
       "description": "The base UUID response data | 基础UUID信息",
@@ -3835,7 +3891,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "CallbackResp": {
       "description": "The oauth callback response data | Oauth回调数据",
@@ -3861,7 +3917,7 @@
           "x-go-name": "UserId"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "CaptchaInfo": {
       "description": "The information of captcha | 验证码数据",
@@ -3876,7 +3932,7 @@
           "x-go-name": "ImgPath"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "CaptchaResp": {
       "description": "The response data of captcha | 验证码返回数据",
@@ -3900,7 +3956,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ChangePasswordReq": {
       "description": "change user's password request | 修改密码请求参数",
@@ -3923,7 +3979,7 @@
           "x-go-name": "OldPassword"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ConfigurationInfo": {
       "description": "The response data of configuration information | 参数配置信息",
@@ -3984,7 +4040,7 @@
           "x-go-name": "Value"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ConfigurationInfoResp": {
       "description": "Configuration information response | 参数配置信息返回体",
@@ -4008,7 +4064,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ConfigurationListInfo": {
       "description": "Configuration list data | 参数配置列表数据",
@@ -4029,7 +4085,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ConfigurationListReq": {
       "description": "Get configuration list request params | 参数配置列表请求参数",
@@ -4069,7 +4125,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ConfigurationListResp": {
       "description": "The response data of configuration list | 参数配置列表数据",
@@ -4093,7 +4149,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "CreateOrUpdateApiAuthorityReq": {
       "description": "Create or update api authorization information request | 创建或更新API授权信息",
@@ -4119,7 +4175,7 @@
           "x-go-name": "RoleId"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DepartmentInfo": {
       "description": "The response data of department information | 部门信息",
@@ -4206,7 +4262,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DepartmentInfoResp": {
       "description": "Department information response | 部门信息返回体",
@@ -4230,7 +4286,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DepartmentListInfo": {
       "description": "Department list data | 部门列表数据",
@@ -4251,7 +4307,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DepartmentListReq": {
       "description": "Get department list request params | 部门列表请求参数",
@@ -4288,7 +4344,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DepartmentListResp": {
       "description": "The response data of department list | 部门列表数据",
@@ -4312,7 +4368,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryDetailInfo": {
       "description": "The response data of dictionary detail information | 字典键值信息",
@@ -4380,7 +4436,7 @@
           "x-go-name": "Value"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryDetailInfoResp": {
       "description": "DictionaryDetail information response | 字典键值信息返回体",
@@ -4404,7 +4460,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryDetailListInfo": {
       "description": "DictionaryDetail list data | 字典键值列表数据",
@@ -4425,7 +4481,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryDetailListReq": {
       "description": "Get dictionary detail list request params | 字典键值列表请求参数",
@@ -4462,7 +4518,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryDetailListResp": {
       "description": "The response data of dictionary detail list | 字典键值列表数据",
@@ -4486,7 +4542,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryInfo": {
       "description": "The response data of dictionary information | 字典信息",
@@ -4543,7 +4599,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryInfoResp": {
       "description": "Dictionary information response | 字典信息返回体",
@@ -4567,7 +4623,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryListInfo": {
       "description": "Dictionary list data | 字典列表数据",
@@ -4588,7 +4644,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryListReq": {
       "description": "Get dictionary list request params | 字典列表请求参数",
@@ -4619,7 +4675,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "DictionaryListResp": {
       "description": "The response data of dictionary list | 字典列表数据",
@@ -4643,7 +4699,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailCaptchaReq": {
       "description": "The email captcha request | 邮箱验证码请求参数",
@@ -4655,7 +4711,7 @@
           "x-go-name": "Email"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailLogInfo": {
       "description": "The response data of email log information | 电子邮件日志信息",
@@ -4705,7 +4761,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailLogInfoResp": {
       "description": "EmailLog information response | 电子邮件日志信息返回体",
@@ -4729,7 +4785,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailLogListInfo": {
       "description": "EmailLog list data | 电子邮件日志列表数据",
@@ -4750,7 +4806,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailLogListReq": {
       "description": "Get email log list request params | 电子邮件日志列表请求参数",
@@ -4796,7 +4852,7 @@
           "x-go-name": "Target"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailLogListResp": {
       "description": "The response data of email log list | 电子邮件日志列表数据",
@@ -4820,7 +4876,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailProviderInfo": {
       "description": "The response data of email provider information | 邮箱服务配置信息",
@@ -4897,7 +4953,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailProviderInfoResp": {
       "description": "EmailProvider information response | 邮箱服务配置信息返回体",
@@ -4921,7 +4977,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailProviderListInfo": {
       "description": "EmailProvider list data | 邮箱服务配置列表数据",
@@ -4942,7 +4998,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailProviderListReq": {
       "description": "Get email provider list request params | 邮箱服务配置列表请求参数",
@@ -4977,7 +5033,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "EmailProviderListResp": {
       "description": "The response data of email provider list | 邮箱服务配置列表数据",
@@ -5001,7 +5057,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "IDPathReq": {
       "description": "Basic ID request | 基础ID地址参数请求",
@@ -5016,7 +5072,7 @@
           "format": "uint64"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "IDReq": {
       "description": "Basic ID request | 基础ID参数请求",
@@ -5032,7 +5088,7 @@
           "x-go-name": "Id"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "IDsReq": {
       "description": "Basic IDs request | 基础ID数组参数请求",
@@ -5051,7 +5107,7 @@
           "x-go-name": "Ids"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "LoginByEmailReq": {
       "description": "Log in by email request | 邮箱登录参数",
@@ -5074,7 +5130,7 @@
           "x-go-name": "Email"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "LoginBySmsReq": {
       "description": "Log in by SMS request | 短信登录参数",
@@ -5097,7 +5153,7 @@
           "x-go-name": "PhoneNumber"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "LoginInfo": {
       "description": "The log in information | 登陆返回的数据信息",
@@ -5120,7 +5176,7 @@
           "x-go-name": "UserId"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "LoginReq": {
       "description": "Login request | 登录参数",
@@ -5161,7 +5217,7 @@
           "x-go-name": "Password"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "LoginResp": {
       "description": "The log in response data | 登录返回数据",
@@ -5185,7 +5241,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "LogoutReq": {
       "description": "Logout Req | 登出请求",
@@ -5197,7 +5253,7 @@
           "x-go-name": "Source"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsBannerInfo": {
       "description": "The response data of mcms banner information | McmsBanner信息",
@@ -5253,7 +5309,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsBannerInfoResp": {
       "description": "The mcms banner information response | McmsBanner信息返回体",
@@ -5277,7 +5333,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsBannerListInfo": {
       "description": "The mcms banner list data | McmsBanner信息列表数据",
@@ -5298,7 +5354,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsBannerListReq": {
       "description": "Get mcms banner list request params | McmsBanner列表请求参数",
@@ -5338,7 +5394,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsBannerListResp": {
       "description": "The response data of mcms banner list | McmsBanner信息列表数据",
@@ -5362,7 +5418,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsNoticeInfo": {
       "description": "The response data of mcms notice information | McmsNotice信息",
@@ -5425,7 +5481,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsNoticeInfoResp": {
       "description": "The mcms notice information response | McmsNotice信息返回体",
@@ -5449,7 +5505,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsNoticeListInfo": {
       "description": "The mcms notice list data | McmsNotice信息列表数据",
@@ -5470,7 +5526,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsNoticeListReq": {
       "description": "Get mcms notice list request params | McmsNotice列表请求参数",
@@ -5510,7 +5566,7 @@
           "x-go-name": "Title"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "McmsNoticeListResp": {
       "description": "The response data of mcms notice list | McmsNotice信息列表数据",
@@ -5534,7 +5590,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuAuthorityInfoReq": {
       "description": "Create or update menu authorization information request params | 创建或更新菜单授权信息参数",
@@ -5561,7 +5617,7 @@
           "x-go-name": "RoleId"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuAuthorityInfoResp": {
       "description": "Menu authorization response data | 菜单授权信息数据",
@@ -5585,7 +5641,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuInfo": {
       "description": "The response data of menu information | 菜单信息",
@@ -5677,7 +5733,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuInfoResp": {
       "description": "Menu information response | 菜单信息返回体",
@@ -5701,7 +5757,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuListInfo": {
       "description": "Menu list data | Menu列表数据",
@@ -5722,7 +5778,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuListResp": {
       "description": "The response data of menu list | 菜单列表返回数据",
@@ -5746,7 +5802,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuPlainInfo": {
       "description": "Menu information plain | 菜单信息无嵌套",
@@ -5905,7 +5961,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuPlainInfoList": {
       "description": "Menu list data | 菜单列表数据",
@@ -5926,7 +5982,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "MenuPlainInfoListResp": {
       "description": "Menu list data response | 菜单列表数据返回体",
@@ -5950,7 +6006,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "Meta": {
       "description": "The meta data of menu | 菜单的meta数据",
@@ -6020,7 +6076,7 @@
           "x-go-name": "Title"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "OauthLoginReq": {
       "description": "Oauth log in request | Oauth 登录请求",
@@ -6044,7 +6100,7 @@
           "x-go-name": "State"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "OauthProviderInfo": {
       "description": "The response data of oauth provider information | 第三方信息",
@@ -6124,7 +6180,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "OauthProviderInfoResp": {
       "description": "Oauth provider information response | 第三方信息返回体",
@@ -6148,7 +6204,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "OauthProviderListInfo": {
       "description": "OauthProvider list data | 第三方列表数据",
@@ -6169,7 +6225,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "OauthProviderListReq": {
       "description": "Get oauth provider list request params | 第三方列表请求参数",
@@ -6200,7 +6256,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "OauthProviderListResp": {
       "description": "The response data of oauth provider list | 第三方列表数据",
@@ -6224,7 +6280,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "PageInfo": {
       "description": "The page request parameters | 列表请求参数",
@@ -6249,7 +6305,152 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
+    },
+    "PdfTaskInfo": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CreatedAt"
+        },
+        "createdBy": {
+          "type": "string",
+          "x-go-name": "CreatedBy"
+        },
+        "downloadUrl": {
+          "type": "string",
+          "x-go-name": "DownloadURL"
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Duration"
+        },
+        "fileName": {
+          "type": "string",
+          "x-go-name": "FileName"
+        },
+        "id": {
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "message": {
+          "type": "string",
+          "x-go-name": "Message"
+        },
+        "questionCount": {
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "QuestionCount"
+        },
+        "startedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "StartedAt"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "x-go-name": "Status"
+        },
+        "updatedAt": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
+    },
+    "PdfTaskInfoList": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PdfTaskInfo"
+          },
+          "x-go-name": "Data"
+        },
+        "total": {
+          "type": "integer",
+          "format": "uint64",
+          "x-go-name": "Total"
+        }
+      },
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
+    },
+    "PdfTaskInfoListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/PdfTaskInfoList"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
+    },
+    "PdfTaskInfoResp": {
+      "description": "Task information response | 定时任务信息返回体",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Error code | 错误代码",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "description": "Data | 数据",
+          "type": "string",
+          "x-go-name": "Data",
+          "$ref": "#/definitions/PdfTaskInfo"
+        },
+        "msg": {
+          "description": "Message | 提示信息",
+          "type": "string",
+          "x-go-name": "Msg"
+        }
+      },
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
+    },
+    "PdfTaskListReq": {
+      "type": "object",
+      "required": [
+        "page",
+        "pageSize"
+      ],
+      "properties": {
+        "page": {
+          "description": "Page number | 第几页",
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0,
+          "x-go-name": "Page"
+        },
+        "pageSize": {
+          "description": "Page size | 单页数据行数",
+          "type": "integer",
+          "format": "uint64",
+          "maximum": 100000,
+          "x-go-name": "PageSize"
+        }
+      },
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "PermCodeResp": {
       "description": "The permission code for front end permission control | 权限码： 用于前端权限控制",
@@ -6275,7 +6476,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "PositionInfo": {
       "description": "The response data of position information | 职位信息",
@@ -6337,7 +6538,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "PositionInfoResp": {
       "description": "Position information response | 职位信息返回体",
@@ -6361,7 +6562,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "PositionListInfo": {
       "description": "Position list data | 职位列表数据",
@@ -6382,7 +6583,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "PositionListReq": {
       "description": "Get position list request params | 职位列表请求参数",
@@ -6425,7 +6626,7 @@
           "x-go-name": "Remark"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "PositionListResp": {
       "description": "The response data of position list | 职位列表数据",
@@ -6449,7 +6650,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ProfileInfo": {
       "description": "The profile information | 个人信息",
@@ -6480,7 +6681,7 @@
           "x-go-name": "Nickname"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ProfileResp": {
       "description": "The profile response data | 个人信息返回数据",
@@ -6504,7 +6705,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RedirectInfo": {
       "description": "Redirect information | 跳转网址",
@@ -6515,7 +6716,7 @@
           "type": "string"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RedirectResp": {
       "description": "Redirect response | 跳转网址返回信息",
@@ -6539,7 +6740,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RefreshTokenInfo": {
       "description": "Refresh token information | 刷新令牌信息",
@@ -6555,7 +6756,7 @@
           "x-go-name": "Token"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RefreshTokenResp": {
       "description": "Refresh token response data | 刷新令牌响应数据",
@@ -6579,7 +6780,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RegisterByEmailReq": {
       "description": "Register by email request | 邮箱注册参数",
@@ -6617,7 +6818,7 @@
           "x-go-name": "Password"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RegisterBySmsReq": {
       "description": "Register by SMS request | 短信注册参数",
@@ -6662,7 +6863,7 @@
           "x-go-name": "PhoneNumber"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RegisterReq": {
       "description": "register request | 注册参数",
@@ -6708,7 +6909,7 @@
           "x-go-name": "Password"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ResetPasswordByEmailReq": {
       "description": "Reset password by email request | 通过邮箱重置密码请求",
@@ -6727,7 +6928,7 @@
           "x-go-name": "Password"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "ResetPasswordBySmsReq": {
       "description": "Reset password by SMS request | 通过短信重置密码请求",
@@ -6746,7 +6947,7 @@
           "x-go-name": "PhoneNumber"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RoleInfo": {
       "description": "The response data of role information | 角色信息",
@@ -6814,7 +7015,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RoleInfoResp": {
       "description": "Role information response | 角色信息返回体",
@@ -6838,7 +7039,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RoleInfoSimple": {
       "description": "The simple role data | 简单的角色数据",
@@ -6855,7 +7056,7 @@
           "x-go-name": "Value"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RoleListInfo": {
       "description": "Role list data | 角色列表数据",
@@ -6876,7 +7077,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RoleListReq": {
       "description": "Get role list request params | 角色列表请求参数",
@@ -6906,7 +7107,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "RoleListResp": {
       "description": "The response data of role list | 角色列表数据",
@@ -6930,7 +7131,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SendEmailReq": {
       "type": "object",
@@ -6956,7 +7157,7 @@
           "x-go-name": "Target"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SendSmsReq": {
       "type": "object",
@@ -6992,7 +7193,7 @@
           "x-go-name": "TemplateId"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsCaptchaReq": {
       "description": "The sms captcha request | 短信验证码请求参数",
@@ -7004,7 +7205,7 @@
           "x-go-name": "PhoneNumber"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsLogInfo": {
       "description": "The response data of sms log information | 短信日志信息",
@@ -7049,7 +7250,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsLogInfoResp": {
       "description": "SmsLog information response | 短信日志信息返回体",
@@ -7073,7 +7274,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsLogListInfo": {
       "description": "SmsLog list data | 短信日志列表数据",
@@ -7094,7 +7295,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsLogListReq": {
       "description": "Get sms log list request params | 短信日志列表请求参数",
@@ -7140,7 +7341,7 @@
           "x-go-name": "SendStatus"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsLogListResp": {
       "description": "The response data of sms log list | 短信日志列表数据",
@@ -7164,7 +7365,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsProviderInfo": {
       "description": "The response data of sms provider information | 短信配置信息",
@@ -7214,7 +7415,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsProviderInfoResp": {
       "description": "SmsProvider information response | 短信配置信息返回体",
@@ -7238,7 +7439,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsProviderListInfo": {
       "description": "SmsProvider list data | 短信配置列表数据",
@@ -7259,7 +7460,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsProviderListReq": {
       "description": "Get sms provider list request params | 短信配置列表请求参数",
@@ -7289,7 +7490,7 @@
           "x-go-name": "PageSize"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "SmsProviderListResp": {
       "description": "The response data of sms provider list | 短信配置列表数据",
@@ -7313,7 +7514,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskInfo": {
       "description": "The response data of task information | 定时任务信息",
@@ -7374,7 +7575,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskInfoResp": {
       "description": "Task information response | 定时任务信息返回体",
@@ -7398,7 +7599,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskListInfo": {
       "description": "Task list data | 定时任务列表数据",
@@ -7419,7 +7620,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskListReq": {
       "description": "Get task list request params | 定时任务列表请求参数",
@@ -7454,7 +7655,7 @@
           "x-go-name": "TaskGroup"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskListResp": {
       "description": "The response data of task list | 定时任务列表数据",
@@ -7478,7 +7679,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskLogInfo": {
       "description": "The response data of task log information | 任务日志信息",
@@ -7509,7 +7710,7 @@
           "x-go-name": "StartedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskLogInfoResp": {
       "description": "TaskLog information response | 任务日志信息返回体",
@@ -7533,7 +7734,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskLogListInfo": {
       "description": "TaskLog list data | 任务日志列表数据",
@@ -7554,7 +7755,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskLogListReq": {
       "description": "Get task log list request params | 任务日志列表请求参数",
@@ -7591,7 +7792,7 @@
           "x-go-name": "TaskId"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TaskLogListResp": {
       "description": "The response data of task log list | 任务日志列表数据",
@@ -7615,7 +7816,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TokenInfo": {
       "description": "The response data of token information | 令牌信息",
@@ -7671,7 +7872,7 @@
           "x-go-name": "Uuid"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TokenInfoResp": {
       "description": "Token information response | Token信息返回体",
@@ -7695,7 +7896,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TokenListInfo": {
       "description": "Token list data | Token列表数据",
@@ -7716,7 +7917,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TokenListReq": {
       "description": "Get token list request params | 令牌列表请求参数",
@@ -7756,7 +7957,7 @@
           "x-go-name": "Uuid"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "TokenListResp": {
       "description": "The response data of token list | 令牌列表数据",
@@ -7780,7 +7981,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UUIDReq": {
       "description": "Basic UUID request | 基础UUID参数请求",
@@ -7796,7 +7997,7 @@
           "x-go-name": "Id"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UUIDsReq": {
       "description": "Basic UUID array request | 基础UUID数组参数请求",
@@ -7814,7 +8015,7 @@
           "x-go-name": "Ids"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UserBaseIDInfo": {
       "description": "The  data of user's basic information | 用户基本信息",
@@ -7864,7 +8065,7 @@
           "x-go-name": "UUID"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UserBaseIDInfoResp": {
       "description": "The response data of user's basic information | 用户基本信息返回数据",
@@ -7888,7 +8089,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UserInfo": {
       "description": "The response data of user information | 用户信息",
@@ -7991,7 +8192,7 @@
           "x-go-name": "UpdatedAt"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UserInfoResp": {
       "description": "User information response | 用户信息返回体",
@@ -8015,7 +8216,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UserListInfo": {
       "description": "User list data | 用户列表数据",
@@ -8036,7 +8237,7 @@
           "x-go-name": "Total"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UserListReq": {
       "description": "Get user list request params | 用户列表请求参数",
@@ -8106,7 +8307,7 @@
           "x-go-name": "RoleIds"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     },
     "UserListResp": {
       "description": "The response data of user list | 用户列表数据",
@@ -8130,7 +8331,7 @@
           "x-go-name": "Msg"
         }
       },
-      "x-go-package": "github.com/suyuan32/simple-admin-core/api/internal/types"
+      "x-go-package": "github.com/neumathe/simple-admin-core/api/internal/types"
     }
   },
   "securityDefinitions": {

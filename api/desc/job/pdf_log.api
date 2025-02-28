@@ -1,0 +1,55 @@
+import "../base.api"
+
+type (
+    PdfTaskInfo {
+        Id string `json:"id"`
+        CreatedAt int64 `json:"createdAt"`
+        UpdatedAt int64 `json:"updatedAt"`
+        CreatedBy string `json:"createdBy"`
+        Status int32 `json:"status"`
+        Message string `json:"message"`
+        QuestionCount int32 `json:"questionCount"`
+        FileName string `json:"fileName"`
+        Duration int64 `json:"duration"`
+        StartedAt int64 `json:"startedAt"`
+        DownloadURL string `json:"downloadUrl"`
+    }
+
+    PdfTaskInfoList {
+        Total uint64 `json:"total"`
+        Data []PdfTaskInfo `json:"data"`
+    }
+
+    PdfTaskInfoListResp {
+        BaseDataInfo
+        Data PdfTaskInfoList `json:"data"`
+    }
+
+    PdfTaskListReq {
+        PageInfo
+    }
+
+        // Task information response | 定时任务信息返回体
+    PdfTaskInfoResp {
+        BaseDataInfo
+
+        // Task information | 定时任务数据
+        Data PdfTaskInfo `json:"data"`
+    }
+)
+
+@server(
+    jwt: Auth
+    group: pdftasklog
+    middleware: Authority
+)
+
+service Core {
+    // get pdf task info | 获取PDF导出状态
+    @handler getPdfTaskInfo
+    post /pdflog (UUIDReq) returns (PdfTaskInfoResp)
+
+    // get pdf task list | 获取PDF导出任务列表
+    @handler getPdfTaskList
+    post /pdflog/list (PdfTaskListReq) returns (PdfTaskInfoListResp)
+}
